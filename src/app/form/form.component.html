@@ -1,0 +1,12 @@
+<p>form works!</p>
+<form [formGroup]="editForm" (ngSubmit)="save()">
+    <label>Name</label>&nbsp; <input type="text" formControlName="name" /><br><br>
+    <label>Alias</label>&nbsp;<input type="text" formControlName="alias"/><br><br>
+    <label>Type</label>&nbsp;<br><br><input type="text" formControlName="type" /><br><br>
+    <label>CreatedOn</label>&nbsp;<input type="text" formControlName="createdOn" /><br><br><br>
+<button type="submit">Update</button>
+
+
+
+<!--<select formControllName="type"> <option value="Academic">Academic</option><option value="Corporate">Corporate</option></select>-->
+</form>

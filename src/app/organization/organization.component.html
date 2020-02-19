@@ -1,0 +1,27 @@
+<p>organization works!</p>
+
+<a routerLink="add">Add organization</a>
+<br>
+<table  border="2">
+
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Type</th>
+        <th>Createdon</th>
+        <th>Action</th>
+    </tr>
+    <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," >
+ <tr >     
+<td>{{i+1}}</td>
+<td>{{org.name}} </td> 
+<td>{{org.alias}} </td>
+<td>{{org.type}} </td>
+<td>{{org.createdon}}</td>
+<td>
+    <a routerLink="edit" >Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a></td>
+</tr>
+</tbody>
+</table>
+<router-outlet></router-outlet>
