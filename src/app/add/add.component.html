@@ -1,7 +1,6 @@
-<p>form works!</p>
-
-<h1>Edit Form</h1>
-<form [formGroup]="editForm" (ngSubmit)="update()">
+<p>add works!</p>
+<h1>Add Form</h1>
+<form [formGroup]="addForm" (ngSubmit)="save()">
     <label>Name</label>&nbsp; <input type="text" formControlName="name" /><br><br>
     <label>Alias</label>&nbsp;<input type="text" formControlName="alias"/><br><br>
     <label>Type</label>&nbsp;<br><br><input type="text" formControlName="type" /><br><br>

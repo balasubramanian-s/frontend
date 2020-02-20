@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {ApiService} from './api.service';
 import {organization} from './organization';
+import {Router} from '@angular/router'
+
 
 
 @Component({
@@ -10,22 +12,47 @@ import {organization} from './organization';
   providers:[ApiService]
 })
 export class OrganizationComponent implements OnInit {
- 
+  
  org:organization[];
  
-    constructor(private _apiService:ApiService ) {
-    console.log("Message Before fetch");
-  _apiService.getAllOrg().subscribe(data=>{this.org=data;console.log(this.org);});   
-    
-    console.log("Message After fetch");
+ 
+    constructor(private _apiService:ApiService,private router:Router ) {
+   this.reload();
  }
+reload(){
+  this._apiService.getAllOrg().subscribe(data=>{this.org=data;console.log(this.org);});   
+}
+
   ngOnInit(): void {  
    console.log("Message from OnInit");
   }
+details(id :Number){
+  this.router.navigateByUrl('details');
+}
+edit(id :Number){
+ this.router.navigateByUrl('/edit');
+ 
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 delete(id:Number){
   this._apiService.deleteOrg(id) .subscribe(
     data => {
       console.log(data);
+      this.reload();
+
       
     });
 

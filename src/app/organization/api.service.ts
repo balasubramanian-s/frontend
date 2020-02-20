@@ -41,6 +41,10 @@ export class ApiService {
     return this._httpClient.delete(`${this.base_url}/${id}`,{responseType:"text"});
    }
 
+   update(id:Number){
+    this.getOrg(id).subscribe(data=>console.log(data));
+   }
+
    }
 
 

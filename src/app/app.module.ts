@@ -7,7 +7,8 @@ import { OrganizationComponent } from './organization/organization.component';
 import { FormComponent } from './form/form.component';
 import{ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
-import { DetailsComponent } from './details/details.component' ;
+import { DetailsComponent } from './details/details.component';
+import { AddComponent } from './add/add.component' ;
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DetailsComponent } from './details/details.component' ;
     OrganizationComponent,
     FormComponent,
     UpdateComponent,
-    DetailsComponent
+    DetailsComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

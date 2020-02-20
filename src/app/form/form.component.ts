@@ -9,13 +9,17 @@ import{ApiService} from '../organization/api.service'
 })
 export class FormComponent implements OnInit {
   org:organization;
+  message:string;
   constructor(private _api:ApiService) { 
     
   }
+ 
 
   ngOnInit(): void {
     
   }
+
+
   editForm=new FormGroup({
     name:new FormControl,
     alias:new FormControl,
@@ -24,17 +28,10 @@ export class FormComponent implements OnInit {
   });
  
 
-  
-  
-  save(){ 
-        this._api.body=this.editForm.value;
-
-    console.log(this._api.body);
-    
-    
-
-    this._api.addOrg(this._api.body).subscribe();
-    console.log("added");  
-    
+  update(){
+     
+    console.log(this.editForm.value);
   }
+  
+ 
 }
