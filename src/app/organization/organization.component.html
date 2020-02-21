@@ -20,8 +20,9 @@
 <td>{{org.type}} </td>
 <td>{{org.createdon}}</td>
 <td>
-    <a (click)="edit(org.id)" >Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a (click)="details(org.id)">Details</a></td>
+    <a [routerLink]="['/edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a (click)="details(org.id)">Details</a></td>
 </tr>
 </tbody>
 </table>
+
 <router-outlet></router-outlet>

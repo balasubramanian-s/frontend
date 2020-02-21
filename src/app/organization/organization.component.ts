@@ -14,7 +14,7 @@ import {Router} from '@angular/router'
 export class OrganizationComponent implements OnInit {
   
  org:organization[];
- 
+
  
     constructor(private _apiService:ApiService,private router:Router ) {
    this.reload();
@@ -24,18 +24,18 @@ reload(){
 }
 
   ngOnInit(): void {  
-   console.log("Message from OnInit");
+  // console.log("Message from OnInit");
   }
 details(id :Number){
   this.router.navigateByUrl('details');
 }
+/*
 edit(id :Number){
+  
+  this._apiService.update(id);
  this.router.navigateByUrl('/edit');
- 
 
-
-
-}
+}*/
 
 
 

@@ -9,6 +9,7 @@ import{ReactiveFormsModule} from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
 import { AddComponent } from './add/add.component' ;
+import{FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AddComponent } from './add/add.component' ;
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

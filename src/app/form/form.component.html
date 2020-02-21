@@ -1,13 +1,14 @@
 <p>form works!</p>
 
 <h1>Edit Form</h1>
-<form [formGroup]="editForm" (ngSubmit)="update()">
-    <label>Name</label>&nbsp; <input type="text" formControlName="name" /><br><br>
-    <label>Alias</label>&nbsp;<input type="text" formControlName="alias"/><br><br>
-    <label>Type</label>&nbsp;<br><br><input type="text" formControlName="type" /><br><br>
-    <label>CreatedOn</label>&nbsp;<input type="date" formControlName="createdOn" /><br><br><br>
-<button type="submit">Update</button>
 
+
+<form [formGroup]="editForm" (ngSubmit)="save()">
+    <label>Name</label>&nbsp; <input type="text" formControlName="name" /><br><br>
+    <label>Alias</label>&nbsp;<input type="text" formControlName="alias"  /><br><br>
+    <label>Type</label>&nbsp;<br><br><input type="text" formControlName="type"/><br><br>
+    <label>CreatedOn</label>&nbsp;<input type="date" formControlName="createdOn" /><br><br><br>
+<button type="submit">Update</button><button type="button" (click)="load()" >Reset</button>
 
 
 <!--<select formControllName="type"> <option value="Academic">Academic</option><option value="Corporate">Corporate</option></select>-->

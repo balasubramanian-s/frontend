@@ -8,7 +8,7 @@ import{map} from 'rxjs/operators'
 })
 export class ApiService {
   _org: any;
-  body:organization;
+   body:any;
 
   private base_url="http://localhost:8080/api/organization";
 
@@ -22,8 +22,9 @@ export class ApiService {
 
 
     getOrg(id:Number):Observable<organization>{
-     
-      return this._httpClient.get<organization>(`${this.base_url}/${id}`).pipe();
+
+     this._org=this._httpClient.get<organization>(`${this.base_url}/${id}`).pipe();
+      return this._org;
 
     }
 
@@ -33,16 +34,21 @@ export class ApiService {
    {
     return this._httpClient.post<organization>(this.base_url,_org).pipe();
    }
-  /* editOrg(_org:Object):Observable<organization>
+  editOrg(_org:Object):Observable<organization>
    {
      return this._httpClient.put<organization>(this.base_url,_org).pipe();
-   }*/
+   }
    deleteOrg(id:Number):Observable<any>{
     return this._httpClient.delete(`${this.base_url}/${id}`,{responseType:"text"});
    }
 
    update(id:Number){
-    this.getOrg(id).subscribe(data=>console.log(data));
+    this.getOrg(id).subscribe(data=>{this.body=data;
+       console.log(this.body);
+           
+    });
+  
+    
    }
 
    }
