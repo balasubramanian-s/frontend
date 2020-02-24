@@ -23,9 +23,7 @@ load(){
 
 }
   ngOnInit(): void {
-    
-
-    
+       
 
   }
   

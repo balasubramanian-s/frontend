@@ -38,7 +38,10 @@ export class FormComponent implements OnInit {
     alias:new FormControl(),
     type:new FormControl(),
     createdon:new FormControl,
-    modifiedon :new FormControl
+    modifiedon :new FormControl,
+    isUserVerification:new FormControl(0),
+    isSignup:new FormControl(0),
+    isActive:new FormControl(1)
   
   });       
  
@@ -50,7 +53,10 @@ export class FormComponent implements OnInit {
       name:this.org.name,
       alias:this.org.alias,
       type:this.org.type,
-     createdon:this.org.createdon
+      isUserVerification:this.org.isUserVerification,
+      isSignup:this.org.isSignup,
+     createdon:this.org.createdon,
+     isActive:this.org.isActive
 
     });   
     

@@ -7,6 +7,8 @@ export class organization{
    type:string;
    createdon:any;
    modifiedon:any;
-  
+  isActive:Boolean;
+  isUserVerification:Boolean;
+  isSignup:Boolean;
 
 }

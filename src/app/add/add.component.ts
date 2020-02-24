@@ -19,15 +19,23 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
+
   addForm=new FormGroup({
     name:new FormControl,
     alias:new FormControl,
     type:new FormControl,
-    
+    isUserVerification:new FormControl(0),
+    isSignup:new FormControl(0)
   });
   save(){
+    
+
     this.org=this.addForm.value;
-    //console.log(this.org);
+    console.log(this.org);
+
     this._apiService.addOrg(this.org).subscribe(data=>console.log(data));
     this._orgComponent.reload();
     

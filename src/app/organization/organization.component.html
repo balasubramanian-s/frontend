@@ -9,8 +9,11 @@
         <th>Name</th>
         <th>Alias</th>
         <th>Type</th>
+        <th>UserVerification</th>
+        <th>SignupRequired </th>
         <th>Createdon</th>
         <th>ModifiedOn</th>
+        <th>Status</th>
         <th>Action</th>
     </tr>
     <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," >
@@ -19,8 +22,12 @@
 <td>{{org.name}} </td> 
 <td>{{org.alias}} </td>
 <td>{{org.type}} </td>
+<td>{{org.isUserVerification}}</td>
+<td>{{org.isSignup}}</td>
 <td>{{org.createdon}}</td>
 <td>{{org.modifiedon}}</td>
+<td>{{org.isActive}}</td>
+
 <td>
     <a [routerLink]="['/edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a [routerLink]="['/details',org.id]">Details</a></td>
 </tr>
