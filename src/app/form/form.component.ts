@@ -69,8 +69,8 @@ export class FormComponent implements OnInit {
     this.org=this.editForm.value;
     this.org.id=this.id;    
     console.log("Updated Data")    
-    this._api.editOrg(this.org).subscribe(data=>console.log(data));
-    this._orgComponent.reload();
+    this._api.editOrg(this.org).subscribe(data=>{console.log(data);this._orgComponent.reload();});
+    
 
 
   }

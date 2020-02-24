@@ -36,8 +36,8 @@ export class AddComponent implements OnInit {
     this.org=this.addForm.value;
     console.log(this.org);
 
-    this._apiService.addOrg(this.org).subscribe(data=>console.log(data));
-    this._orgComponent.reload();
+    this._apiService.addOrg(this.org).subscribe(data=>{console.log(data);this._orgComponent.reload();});
+    
     
   }
 }

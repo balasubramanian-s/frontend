@@ -22,7 +22,7 @@ check(){
 
   }
   else{
-    alert("Invalid Credetials")
+    alert("Invalid Password")
 
   }
 }

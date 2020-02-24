@@ -16,11 +16,11 @@
        <td>{{org.name}}</td>
        <td>{{org.alias}} </td>
         <td>{{org.type}} </td>
-        <td>{{org.isUserVerification}}</td>
-        <td>{{org.isSignup}}</td>
-        <td>{{org.createdon}}</td>
-        <td>{{org.modifiedon}}</td>
-        <td>{{org.isActive}}</td>
+        <td>{{org.isUserVerification | yesNo}}</td>
+        <td>{{org.isSignup | yesNo}}</td>
+        <td>{{org.createdon | date:'medium'}}</td>
+        <td>{{org.modifiedon | date:'medium'}}</td>
+        <td>{{org.isActive | status}}</td>
    </tr>
 
    </table>

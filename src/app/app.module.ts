@@ -11,6 +11,8 @@ import { DetailsComponent } from './details/details.component';
 import { AddComponent } from './add/add.component' ;
 import{FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { YesNoPipe } from './yes-no.pipe';
+import { StatusPipe } from './status.pipe';
 
 
 
@@ -22,7 +24,9 @@ import { LoginComponent } from './login/login.component';
     
     DetailsComponent,
     AddComponent,
-    LoginComponent
+    LoginComponent,
+    YesNoPipe,
+    StatusPipe
   ],
   imports: [
     BrowserModule,
