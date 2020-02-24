@@ -1,0 +1,12 @@
+<h1>Login Page</h1>
+<div >
+    <div >
+    <h3> User Name : </h3> <input type="text" name="username" [(ngModel)]="username">
+
+     <h3> Password : </h3><input type="password" name="password" [(ngModel)]="password"><br>
+    </div>
+    <button (click)=check() >
+      Login
+    </button>
+  </div>
+  <router-outlet></router-outlet>

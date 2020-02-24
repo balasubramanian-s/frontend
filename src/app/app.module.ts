@@ -10,6 +10,7 @@ import{ApiService} from '../app/api.service'
 import { DetailsComponent } from './details/details.component';
 import { AddComponent } from './add/add.component' ;
 import{FormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -20,7 +21,8 @@ import{FormsModule} from '@angular/forms';
     FormComponent,
     
     DetailsComponent,
-    AddComponent
+    AddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

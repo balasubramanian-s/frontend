@@ -1,4 +1,4 @@
-<p>organization works!</p>
+<h1>Organizations</h1>
 
 <a routerLink="add">Add organization</a>
 <br>
@@ -29,7 +29,7 @@
 <td>{{org.isActive}}</td>
 
 <td>
-    <a [routerLink]="['/edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a [routerLink]="['/details',org.id]">Details</a></td>
+    <a [routerLink]="['edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a [routerLink]="['/details',org.id]">Details</a></td>
 </tr>
 </tbody>
 </table>

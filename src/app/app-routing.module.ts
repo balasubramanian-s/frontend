@@ -3,26 +3,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './form/form.component';
 import{AddComponent} from './add/add.component';
 import{DetailsComponent} from './details/details.component';
-import { from } from 'rxjs';
+import{OrganizationComponent} from '../app/organization/organization.component';
+import{ LoginComponent} from './login/login.component'
 
 
 
 const routes: Routes = [
   {
-    path:"add",
-    component:AddComponent
+    path:'',
+    component:LoginComponent,
   },
-{
-  path:"edit/:id",
-  component:FormComponent
-},
-{
-  path:"details/:id",
-  component:DetailsComponent
-}
-
-
-
+  {
+    path:"home",
+    component:OrganizationComponent,
+    children:[{ path:"add",component:AddComponent},{path:"edit/:id",component:FormComponent}]
+  },
+  {
+    path:"details/:id",
+    component:DetailsComponent
+  }
 ];
 
 @NgModule({
