@@ -10,6 +10,7 @@
         <th>Alias</th>
         <th>Type</th>
         <th>Createdon</th>
+        <th>ModifiedOn</th>
         <th>Action</th>
     </tr>
     <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," >
@@ -19,8 +20,9 @@
 <td>{{org.alias}} </td>
 <td>{{org.type}} </td>
 <td>{{org.createdon}}</td>
+<td>{{org.modifiedon}}</td>
 <td>
-    <a [routerLink]="['/edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a (click)="details(org.id)">Details</a></td>
+    <a [routerLink]="['/edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>|<a [routerLink]="['/details',org.id]">Details</a></td>
 </tr>
 </tbody>
 </table>

@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { FormComponent } from './form/form.component';
 import{ReactiveFormsModule} from '@angular/forms';
-import { UpdateComponent } from './update/update.component';
+import{ApiService} from '../app/api.service'
 import { DetailsComponent } from './details/details.component';
 import { AddComponent } from './add/add.component' ;
 import{FormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import{FormsModule} from '@angular/forms';
     AppComponent,
     OrganizationComponent,
     FormComponent,
-    UpdateComponent,
+    
     DetailsComponent,
     AddComponent
   ],

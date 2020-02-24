@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import {ApiService} from './api.service';
+import {ApiService} from '../api.service';
 import {organization} from './organization';
 import {Router} from '@angular/router'
 
@@ -24,36 +24,14 @@ reload(){
 }
 
   ngOnInit(): void {  
-  // console.log("Message from OnInit");
-  }
-details(id :Number){
-  this.router.navigateByUrl('details');
-}
-/*
-edit(id :Number){
   
-  this._apiService.update(id);
- this.router.navigateByUrl('/edit');
-
-}*/
-
-
-
-
-
-
-
-
-
-
+  }
 
 delete(id:Number){
   this._apiService.deleteOrg(id) .subscribe(
     data => {
       console.log(data);
-      this.reload();
-
-      
+      this.reload();      
     });
 
 }

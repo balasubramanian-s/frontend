@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient } from '@angular/common/http';
-import{organization} from './organization';
+import{organization} from '../app/organization/organization'
 import {Observable} from 'rxjs';
 import{map} from 'rxjs/operators'
 @Injectable({
