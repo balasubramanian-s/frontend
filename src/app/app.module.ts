@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import{HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { YesNoPipe } from './yes-no.pipe';
 import { StatusPipe } from './status.pipe';
 
+import{OAuthModule} from 'angular-oauth2-oidc';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -21,7 +27,7 @@ import { StatusPipe } from './status.pipe';
     AppComponent,
     OrganizationComponent,
     FormComponent,
-    
+   
     DetailsComponent,
     AddComponent,
     LoginComponent,
@@ -33,9 +39,15 @@ import { StatusPipe } from './status.pipe';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    OAuthModule.forRoot(),
+    BrowserAnimationsModule,
+    NgbModule,
+    NgbAlertModule,
+    CommonModule,
+    
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

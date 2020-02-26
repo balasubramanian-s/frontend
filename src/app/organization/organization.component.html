@@ -1,24 +1,25 @@
-<h1>Organizations</h1>
+<h1 class="p-3 mb-2 bg-primary text-white"> Organizations</h1>
 
-<a routerLink="add">Add organization</a>
+<button  routerLink="add" class="btn-primary" style="float: right;">Add organization</button>
 <br>
-<table  border="2">
-
-    <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Alias</th>
-        <th>Type</th>
-        <th>UserVerification</th>
-        <th>SignupRequired </th>
-        <th>Createdon</th>
-        <th>ModifiedOn</th>
-        <th>Status</th>
-        <th>Action</th>
+<table  class="table table-striped" >
+<thead >
+    <tr class="align-middle">
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Alias</th>
+        <th scope="col">Type</th>
+        <th scope="col">UserVerification</th>
+        <th scope="col"> SignupRequired </th>
+        <th scope="col">Createdon</th>
+        <th scope="col">ModifiedOn</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
     </tr>
+</thead>
     <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," >
  <tr >     
-<td>{{i+1}}</td>
+<th scope="row">{{i+1}}</th>
 <td>{{org.name}} </td> 
 <td>{{org.alias}} </td>
 <td>{{org.type}} </td>
@@ -29,7 +30,9 @@
 <td>{{org.isActive |status}}</td>
 
 <td>
-    <a [routerLink]="['edit',org.id]"> Edit</a> &nbsp;| &nbsp;<a (click)="delete(org.id)">Delete</a>&nbsp;|&nbsp;<a [routerLink]="['/details',org.id]">Details</a></td>
+    <button [routerLink]="['edit',org.id]" class="btn-primary"> Edit</button> &nbsp; 
+    &nbsp;<button (click)="delete(org.id)"class="btn-primary">Delete</button>&nbsp;
+    &nbsp;<button [routerLink]="['/details',org.id]" class="btn-primary">Details</button></td>
 </tr>
 </tbody>
 </table>
