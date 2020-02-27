@@ -3,7 +3,8 @@ import{FormGroup,FormControl} from '@angular/forms';
 import { organization } from '../organization/organization';
 import{ApiService} from '../api.service';
 import{Router,ActivatedRoute,ParamMap} from '@angular/router';
-import{OrganizationComponent} from '../organization/organization.component'
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-form',
@@ -19,12 +20,16 @@ export class FormComponent implements OnInit {
   
   constructor(  private _activatedroute: ActivatedRoute,
                private _router: Router,
-               private _api:ApiService,
-               private _orgComponent:OrganizationComponent) { 
+               private _api:ApiService
+               ) { 
                 
-                 this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
-                this._api.getOrg(this.id).subscribe(data=>{this.org=data;this.load(); });    
+                  this.getdetails();
 
+
+  }
+  getdetails(){
+                 this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
+                this._api.getOrg(this.id).subscribe(data=>{this.org=data;this.load(); });   
 
   }
 
@@ -36,11 +41,9 @@ export class FormComponent implements OnInit {
    
     name:new FormControl(), 
     alias:new FormControl(),
-    type:new FormControl(),
+    university:new FormControl(),
     createdon:new FormControl,
     modifiedon :new FormControl,
-    isUserVerification:new FormControl(0),
-    isSignup:new FormControl(0),
     isActive:new FormControl(1)
   
   });       
@@ -52,10 +55,8 @@ export class FormComponent implements OnInit {
     this.editForm.patchValue({
       name:this.org.name,
       alias:this.org.alias,
-      type:this.org.type,
-      isUserVerification:this.org.isUserVerification,
-      isSignup:this.org.isSignup,
-     createdon:this.org.createdon,
+      university:this.org.university,
+      createdon:this.org.createdon,
      isActive:this.org.isActive
 
     });   
@@ -69,8 +70,8 @@ export class FormComponent implements OnInit {
     this.org=this.editForm.value;
     this.org.id=this.id;    
     console.log("Updated Data")    
-    this._api.editOrg(this.org).subscribe(data=>{console.log(data);this._orgComponent.reload();});
-    
+    this._api.editOrg(this.org).subscribe(data=>{console.log(data);});
+    this._router.navigateByUrl('home');
 
 
   }

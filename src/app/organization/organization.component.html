@@ -1,40 +1,57 @@
+
+
+
+
+
+
+<div class="main">
 <h1 class="p-3 mb-2 bg-primary text-white"> Organizations</h1>
 
-<button  routerLink="add" class="btn-primary" style="float: right;">Add organization</button>
+<button routerLink="/add" class="btn-primary btn-btn-lg" style="float: right;" >Add organization</button><br>
 <br>
 <table  class="table table-striped" >
-<thead >
-    <tr class="align-middle">
+<thead>
+    <tr >
         <th scope="col">No</th>
         <th scope="col">Name</th>
         <th scope="col">Alias</th>
-        <th scope="col">Type</th>
-        <th scope="col">UserVerification</th>
-        <th scope="col"> SignupRequired </th>
+        <th scope="col">University</th>
+        
         <th scope="col">Createdon</th>
         <th scope="col">ModifiedOn</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
+        <th scope="col">Employees</th>
+        <th scope="col">Students</th>
     </tr>
 </thead>
-    <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," >
+    <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," class="align-middle" >
  <tr >     
 <th scope="row">{{i+1}}</th>
-<td>{{org.name}} </td> 
+<td><a [routerLink]="['/details',org.id]">{{org.name}}</a> </td> 
 <td>{{org.alias}} </td>
-<td>{{org.type}} </td>
-<td>{{org.isUserVerification | yesNo}}</td>
-<td>{{org.isSignup | yesNo}}</td>
+<td>{{org.university}} </td>
 <td>{{org.createdon | date:'medium'}}</td>
 <td>{{org.modifiedon| date:'medium'}}</td>
 <td>{{org.isActive |status}}</td>
 
 <td>
-    <button [routerLink]="['edit',org.id]" class="btn-primary"> Edit</button> &nbsp; 
+    <button [routerLink]="['/edit',org.id]" class="btn-primary">Edit</button>
     &nbsp;<button (click)="delete(org.id)"class="btn-primary">Delete</button>&nbsp;
-    &nbsp;<button [routerLink]="['/details',org.id]" class="btn-primary">Details</button></td>
+   
+
+<td>
+    <button [routerLink]="['employee/:id',org.id]" class="btn-primary btn-btn-lg" > View</button>
+    
+</td>
+<td>
+    <button [routerLink]="['students/:id',org.id]" class="btn-primary btn-btn-lg">Manage</button>
+</td>
 </tr>
 </tbody>
 </table>
+</div>
+
+
 
 <router-outlet></router-outlet>

@@ -1,27 +1,22 @@
-<h1>Organization Details</h1>
-<table  border="2">
+<div class="main">
 
-    <tr>
+<h1 class="p-3 mb-2 bg-primary text-white">Organization Details</h1>
+<table  border="2" class="table table-striped" >
+
+    <tbody class="align-middle">
+
+         <tr><th>Name</th> <td>{{org.name}}</td> </tr>
+         <tr><th>Alias</th> <td>{{org.alias}} </td></tr>
+         <tr> <th>Type</th> <td>{{org.university}} </td></tr>
+         <tr><th>Createdon</th> <td>{{org.createdon | date:'medium'}}</td></tr>
+         <tr><th>ModifiedOn</th> <td>{{org.modifiedon | date:'medium'}}</td></tr>
+         <tr> <th>Status</th><td>{{org.isActive | status}}</td></tr>
+        
+        
        
-        <th>Name</th>
-        <th>Alias</th>
-        <th>Type</th>
-        <th>UserVerification</th>
-        <th>SignupRequired </th>
-        <th>Createdon</th>
-        <th>ModifiedOn</th>
-        <th>Status</th>
-    </tr>
-   <tr>
-       <td>{{org.name}}</td>
-       <td>{{org.alias}} </td>
-        <td>{{org.type}} </td>
-        <td>{{org.isUserVerification | yesNo}}</td>
-        <td>{{org.isSignup | yesNo}}</td>
-        <td>{{org.createdon | date:'medium'}}</td>
-        <td>{{org.modifiedon | date:'medium'}}</td>
-        <td>{{org.isActive | status}}</td>
-   </tr>
+    </tbody>
+  
 
    </table>
+</div>
    <router-outlet></router-outlet>

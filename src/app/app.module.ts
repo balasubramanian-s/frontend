@@ -20,19 +20,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { EmployeesComponent } from './employees/employees.component';
+import { StudentsComponent } from './students/students.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OrganizationComponent,
-    FormComponent,
-   
+    FormComponent,   
     DetailsComponent,
     AddComponent,
     LoginComponent,
     YesNoPipe,
-    StatusPipe
+    StatusPipe,
+    EmployeesComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     NgbAlertModule,
     CommonModule,
-    
+    RouterModule.forRoot([])
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

@@ -4,11 +4,9 @@ export class organization{
    id:Number;
    name:String;
    alias:String;
-   type:string;
+  university:string;
    createdon:any;
    modifiedon:any;
   isActive:Boolean;
-  isUserVerification:Boolean;
-  isSignup:Boolean;
-
+ logo:File;
 }
