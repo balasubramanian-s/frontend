@@ -9,5 +9,9 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
-
+#login{
+    margin-left: 30%;
+    margin-top: 10px;
+    
+}
   

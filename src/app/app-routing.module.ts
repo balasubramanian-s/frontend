@@ -1,13 +1,15 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormComponent } from './form/form.component';
-import{AddComponent} from './add/add.component';
-import{DetailsComponent} from './details/details.component';
+import { FormComponent } from './organization/form/form.component';
+import{AddComponent} from './organization/add/add.component';
+import{DetailsComponent} from './organization/details/details.component';
 import{OrganizationComponent} from '../app/organization/organization.component';
 import{ LoginComponent} from './login/login.component'
-import{EmployeesComponent} from './employees/employees.component';
+
 import{StudentsComponent} from './students/students.component';
-import { from } from 'rxjs';
+
+import { FacultyComponent } from './organization/faculty/faculty.component';
+import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
 
 
 const routes: Routes = [
@@ -33,13 +35,18 @@ const routes: Routes = [
     path:"details/:id",
     component:DetailsComponent
   },
+
  {
-   path:"employee/:id",
-   component:EmployeesComponent
+   path:"faculty/:id",
+   component:FacultyComponent
  },
 {
   path:"students/:id",
   component:StudentsComponent
+},
+{
+  path:"faculty",
+  component:AllFacultyComponent
 }
   
 ];

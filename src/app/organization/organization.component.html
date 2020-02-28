@@ -1,18 +1,29 @@
 
 
 
+<div id="sidebar" >
+    <div id="content">
+        <h1 class="p-2 mb-2 bg-dark text-white"> Revature</h1>
+
+        
+        <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" routerLink="/faculty">Employees</button></aside>
+       
+    </div>
+   
+
+</div>
 
 
-
+<h1 class="p-4 mb-3 bg-dark text-white"> </h1>
 <div class="main">
-<h1 class="p-3 mb-2 bg-primary text-white"> Organizations</h1>
+<h1 class="p-3 mb-2 bg-dark text-white"> Organizations</h1>
 
-<button routerLink="/add" class="btn-primary btn-btn-lg" style="float: right;" >Add organization</button><br>
+<button routerLink="/add" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;" >Add organization</button><br>
 <br>
 <table  class="table table-striped" >
 <thead>
     <tr >
-        <th scope="col">No</th>
+        <th scope="col">No </th>
         <th scope="col">Name</th>
         <th scope="col">Alias</th>
         <th scope="col">University</th>
@@ -36,16 +47,16 @@
 <td>{{org.isActive |status}}</td>
 
 <td>
-    <button [routerLink]="['/edit',org.id]" class="btn-primary">Edit</button>
-    &nbsp;<button (click)="delete(org.id)"class="btn-primary">Delete</button>&nbsp;
+    <button [routerLink]="['/edit',org.id]" class="btn-dark">Edit</button>
+    &nbsp;<button (click)="delete(org.id)"class="btn-dark">Delete</button>&nbsp;
    
 
 <td>
-    <button [routerLink]="['employee/:id',org.id]" class="btn-primary btn-btn-lg" > View</button>
+    <button [routerLink]="['/faculty',org.id]" class="btn-dark btn-btn-lg" > View</button>
     
 </td>
 <td>
-    <button [routerLink]="['students/:id',org.id]" class="btn-primary btn-btn-lg">Manage</button>
+    <button [routerLink]="['/students',org.id]" class="btn-dark btn-btn-lg">Manage</button>
 </td>
 </tr>
 </tbody>

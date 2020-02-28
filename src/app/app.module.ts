@@ -5,11 +5,11 @@ import{HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrganizationComponent } from './organization/organization.component';
-import { FormComponent } from './form/form.component';
+import { FormComponent } from './organization/form/form.component';
 import{ReactiveFormsModule} from '@angular/forms';
-import{ApiService} from '../app/api.service'
-import { DetailsComponent } from './details/details.component';
-import { AddComponent } from './add/add.component' ;
+import{ApiService} from './organization/api.service';
+import { DetailsComponent } from './organization/details/details.component';
+import { AddComponent } from './organization/add/add.component' ;
 import{FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { YesNoPipe } from './yes-no.pipe';
@@ -21,8 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { EmployeesComponent } from './employees/employees.component';
+
 import { StudentsComponent } from './students/students.component';
+import { FacultyComponent } from './organization/faculty/faculty.component';
+import { FacultyService } from './organization/faculty/faculty.service';
+
+import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
 
 
 @NgModule({
@@ -35,8 +39,14 @@ import { StudentsComponent } from './students/students.component';
     LoginComponent,
     YesNoPipe,
     StatusPipe,
-    EmployeesComponent,
-    StudentsComponent
+   
+    StudentsComponent,
+   
+    FacultyComponent,
+   
+   
+   
+    AllFacultyComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +61,7 @@ import { StudentsComponent } from './students/students.component';
     CommonModule,
     RouterModule.forRoot([])
   ],
-  providers: [ApiService],
+  providers: [ApiService,FacultyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import {ApiService} from '../api.service';
+import {ApiService} from './api.service';
 import {organization} from './organization';
 import {Router} from '@angular/router'
 
@@ -14,16 +14,17 @@ import {Router} from '@angular/router'
 export class OrganizationComponent implements OnInit {
   
  org:organization[];
-
  
     constructor(private _apiService:ApiService,private router:Router ) {
-   this.reload();
+   
  }
 reload(){
-  this._apiService.getAllOrg().subscribe(data=>{this.org=data;console.log(this.org);});   
+  this._apiService.getAllOrg().subscribe(data=>{this.org=data;});   
 }
 
   ngOnInit(): void {  
+    this.reload();
+    
   
   }
 
@@ -35,6 +36,7 @@ delete(id:Number){
     });
 
 }
+
 
  
 
