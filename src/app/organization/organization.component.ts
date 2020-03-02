@@ -16,6 +16,7 @@ export class OrganizationComponent implements OnInit {
  org:organization[];
  
     constructor(private _apiService:ApiService,private router:Router ) {
+      this.reload();
    
  }
 reload(){
@@ -23,10 +24,12 @@ reload(){
 }
 
   ngOnInit(): void {  
-    this.reload();
+  //  this.reload();
     
   
   }
+   
+  
 
 delete(id:Number){
   this._apiService.deleteOrg(id) .subscribe(

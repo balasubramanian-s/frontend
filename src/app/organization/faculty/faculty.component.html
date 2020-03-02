@@ -1,5 +1,38 @@
-<p>faculty works!</p>
-<div *ngFor="let i of this.faculty">
-    
-   {{i.first_name}}
+<app-sidebar></app-sidebar>
+<div class="main">
+   <h1 class="p-3 mb-2 bg-dark text-white"> {{name}} Employees </h1>
+   <button [routerLink]="['/addFaculties',this.id,this.name]" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;">Add Faculty</button>
+   <div *ngIf="flag">
+
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th>No</th>
+               <th>FirstName</th>
+               <th>LastName</th>
+               <th>DateOfBirth</th>
+               <th>Email</th>
+               <th>Mobile</th>
+               <th>CreatedOn</th>
+               <th>ModifiedOn</th>
+               <th>Action</th>
+            </tr>
+
+         </thead>
+         <tbody *ngFor="let i of this.faculty ;let j=index;">
+            <th>{{j+1}}</th>
+            <td> {{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.dob}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.mobile_no}}</td>
+            <td>{{i.createdon}}</td>
+            <td>{{i.modifiedon}}</td>
+            <td><button routerLink="[edit/:id ,i.id]"  class="btn-dark btn-btn-lg">Edit</button> 
+            &nbsp;&nbsp;<button  class="btn-dark btn-btn-lg"(click)="delete(i.id)">Delete</button></td>
+
+         </tbody>
+      </table>
+
+   </div>
 </div>

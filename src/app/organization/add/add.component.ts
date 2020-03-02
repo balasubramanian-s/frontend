@@ -22,7 +22,6 @@ export class AddComponent implements OnInit {
 
 
 
-
   addForm=new FormGroup({
     name:new FormControl,
     alias:new FormControl,

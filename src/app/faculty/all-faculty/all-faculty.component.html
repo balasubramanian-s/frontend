@@ -1,24 +1,36 @@
-<p>all-faculty works!</p>
+<app-sidebar></app-sidebar>
+<div class="main">
 
+<h1 class="p-3 mb-2 bg-dark text-white">Employees</h1>
+<button routerLink="/addFaculties" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;">Add Faculty</button>
+<div *ngIf=flag>
+<table  class="table table-striped" >
+  <thead>
+     <tr>
+        <th>No</th>
+        <th>FirstName</th>            
+        <th>LastName</th>
+        <th>DateOfBirth</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>CreatedOn</th>
+        <th>ModifiedOn</th>
+     </tr>
 
-<table  class="table table-striped">
-   <tbody  >   <!--*ngFor="let fac of this.faculty"-->
-    <th scope="row">{{1}}</th>
-   
-    <td>{{faculty.first_name}}</td>
-    <td>{{faculty.last_name}}</td>
-    <td>{{faculty.dob}}</td>
-    <td>{{faculty.email}}</td>
-    <td>{{faculty.mobile_no}}</td>
+  </thead>
+  <tbody *ngFor="let i of this.faculty ;let j=index;">
     
-    
+    <th>{{j+1}}</th>
+     <td> {{i.first_name}}</td>
+     <td>{{i.last_name}}</td>
+     <td>{{i.dob}}</td>
+     <td>{{i.email}}</td>
+     <td>{{i.mobile_no}}</td>
+     <td>{{i.createdon}}</td>
+     <td>{{i.modifiedon}}</td>
+     
 
-
-
-   </tbody> 
-
-
-
-
-
+  </tbody>
 </table>
+</div>
+</div>

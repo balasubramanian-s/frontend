@@ -10,6 +10,7 @@ import{StudentsComponent} from './students/students.component';
 
 import { FacultyComponent } from './organization/faculty/faculty.component';
 import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
+import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,7 @@ const routes: Routes = [
   },
 
  {
-   path:"faculty/:id",
+   path:"faculty/:id/:name",
    component:FacultyComponent
  },
 {
@@ -47,6 +48,10 @@ const routes: Routes = [
 {
   path:"faculty",
   component:AllFacultyComponent
+},
+{
+  path:"addFaculties/:id/:name",
+  component:AddFacultyComponent
 }
   
 ];

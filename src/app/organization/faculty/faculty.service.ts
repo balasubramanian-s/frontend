@@ -26,9 +26,18 @@ getFaculty(id:Number){
 getFacultyByInstitution(id:Number):Observable<Faculty[]>{
   return this._httpClient.get<Faculty[]>(`${this.url2}/${id}`).pipe(map((res:any)=>res));
 
+}
+deleteFaculty(id:Number):Observable<any>
+{
+  return this._httpClient.delete(`${this.faculty_url}/${id}`,{responseType:"text"});
 
 }
-
+addFaculty(fac:Faculty):Observable<Faculty>{
+  return this._httpClient.post<Faculty>(this.faculty_url,fac).pipe();
+}
+editFaculty(fac:Faculty):Observable<Faculty>{
+  return this._httpClient.put<Faculty>(this.faculty_url,fac).pipe();
+}
 
 
 

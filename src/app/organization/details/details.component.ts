@@ -12,6 +12,7 @@ import{Router,ActivatedRoute,ParamMap} from '@angular/router';
 export class DetailsComponent implements OnInit {
   org:organization;
   id:Number;
+  flag=false;
   constructor(private _api:ApiService,
               private _activatedroute: ActivatedRoute,
               private _router: Router,) {
@@ -19,7 +20,7 @@ export class DetailsComponent implements OnInit {
    }
 load(){
   this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
-    this._api.getOrg(this.id).subscribe(data=>{this.org=data; });
+    this._api.getOrg(this.id).subscribe(data=>{this.org=data;this.flag=true; });
 
 }
   ngOnInit(): void {
