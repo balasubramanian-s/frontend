@@ -9,15 +9,17 @@
 <label>FirstName</label>&nbsp;<input type="text" formControlName="first_name"> <br><br>
 <label>LastName</label>&nbsp;<input type="text" formControlName="last_name" /><br><br>
 <label>DateOfBirth</label>&nbsp;<input type="date" formControlName="dob" /><br><br>
-
+<label>EmployeeId</label>&nbsp;<input type="text" formControlName="employee_id"><br><br>
 <label>Email</label>&nbsp;<input type="email" formControlName="email" /><br><br>
 <label>MobileNo</label>&nbsp;<input type="tel" formControlName="mobile_no" /><br><br>
-<label>Role_Id</label>&nbsp;&nbsp;<select (change)="role($event.target.value)" class="btn btn-dark dropdown-toggle border border-dark text-white">
+<label>Role </label>&nbsp;&nbsp;<select (change)="role($event.target.value)" class="btn btn-dark dropdown-toggle border border-dark text-white">
          <option value="" disabled selected>Select</option>
-            <option *ngFor="let role of Roles;" [value]="role">{{this.role}}</option>
+            <option *ngFor="let role of roles;" [value]="role.id">{{this.role.name}}</option>
            </select><br><br>
-<button type="submit" class="btn btn-dark">Save</button>
+<button type="submit" class="btn btn-dark" >Save</button>   
 
+
+<!-- [routerLink]="['/faculty',this.id,this.name]" -->
 
 </form>
 

@@ -15,12 +15,15 @@ export class FacultyComponent implements OnInit {
   id:Number;
   flag=false;
   name:string;
-  constructor(private fac:FacultyService,private _activatedroute:ActivatedRoute) { }
+  constructor(private fac:FacultyService,private _activatedroute:ActivatedRoute) { 
+    
+  }
 
   ngOnInit(): void {
     this.getbyInst();
     
   }
+
 getbyInst(){
   this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
   this.name=this._activatedroute.snapshot.paramMap.get('name');

@@ -25,6 +25,8 @@ import { FacultyService } from './organization/faculty/faculty.service';
 import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
+import { RolesComponent } from './faculty/roles/roles.component';
+import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component';
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component
     StudentsComponent,   
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent
+    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent
   ],
   imports: [
     BrowserModule,

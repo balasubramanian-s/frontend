@@ -1,0 +1,25 @@
+<app-sidebar></app-sidebar>
+<div class="main">
+    <h1 class="p-3 mb-2 bg-dark text-white">Faculty Roles</h1>
+    <button  class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;" (click)=add()>Add Roles</button><br>
+    
+    <div *ngIf="flag">
+        
+        <table border="2" class="table table-striped">
+            <tbody>
+                <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let r of role;let i=index">
+                 <td>{{i+1}}</td>
+                 <td>{{r.name}}</td>
+                 <td><button class="btn-dark" (click)="delete(r.id)" >Delete</button></td>
+
+            </tr>
+            </tbody>
+        </table>
+       
+    </div>
+</div>
