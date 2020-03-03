@@ -27,6 +27,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './faculty/roles/roles.component';
 import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component';
+import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component
     StudentsComponent,   
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent
+    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent, EditfacultyComponent
   ],
   imports: [
     BrowserModule,

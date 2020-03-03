@@ -28,9 +28,9 @@
             <td>{{i.mobile_no}}</td>
             <td>{{i.createdon}}</td>
             <td>{{i.modifiedon}}</td>
-            <td><button routerLink="[edit/:id ,i.id]"  class="btn-dark btn-btn-lg">Edit</button> 
+            <td><button [routerLink]="['/editfaculty',i.id]"  class="btn-dark btn-btn-lg">Edit</button> 
             &nbsp;&nbsp;<button  class="btn-dark btn-btn-lg"(click)="delete(i.id)">Delete</button></td>
-
+               
          </tbody>
       </table>
 

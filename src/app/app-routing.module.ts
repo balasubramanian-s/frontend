@@ -13,6 +13,7 @@ import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './faculty/roles/roles.component';
 import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component';
+import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,10 @@ const routes: Routes = [
 {
   path:"addFaculties/:id/:name",
   component:AddFacultyComponent
+},
+{
+  path:"editfaculty/:id",
+  component:EditfacultyComponent
 },
 {
   path:"roles",
