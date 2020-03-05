@@ -43,8 +43,11 @@ export class FacultyService {
 
   //htpp calls for Roles Api
   getRoles(): Observable<Roles> {
-    return this._httpClient.get<Roles[]>(`${this.base_url}/role`).pipe(map((res: any) => res));
+    return this._httpClient.get<Roles[]>(`${this.base_url}/role`).pipe(map((res: any) => this.roles=res));
 
+  }
+  getRolesByid(id:number){
+    return this._httpClient.get<Roles>(`${this.base_url}/role/${id}`).pipe(map((res:any)=>res));
   }
   
 

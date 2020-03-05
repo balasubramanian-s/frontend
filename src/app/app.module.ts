@@ -30,6 +30,7 @@ import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component
 import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.componen
     StudentsComponent,   
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent, EditfacultyComponent
+    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent, EditfacultyComponent, 
   ],
   imports: [
     BrowserModule,

@@ -57,7 +57,7 @@ const routes: Routes = [
   component:AddFacultyComponent
 },
 {
-  path:"editfaculty/:id",
+  path:"editfaculty/:id/:id1/:name",
   component:EditfacultyComponent
 },
 {

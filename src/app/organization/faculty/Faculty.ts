@@ -17,11 +17,5 @@ export class Faculty{
 	
 	role_id :Number ;
 	
-	 createdon:any;
-	
-	 modifiedon:any;
-	
-	createdby: String ;
-
-	 modifiedby: String;
+	 
 }

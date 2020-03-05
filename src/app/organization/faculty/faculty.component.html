@@ -10,6 +10,7 @@
                <th>No</th>
                <th>FirstName</th>
                <th>LastName</th>
+               <th>Role</th>
                <th>DateOfBirth</th>
                <th>Email</th>
                <th>Mobile</th>
@@ -23,12 +24,13 @@
             <th>{{j+1}}</th>
             <td> {{i.first_name}}</td>
             <td>{{i.last_name}}</td>
+            <!-- <td>{{}}</td> -->
             <td>{{i.dob}}</td>
             <td>{{i.email}}</td>
             <td>{{i.mobile_no}}</td>
             <td>{{i.createdon}}</td>
             <td>{{i.modifiedon}}</td>
-            <td><button [routerLink]="['/editfaculty',i.id]"  class="btn-dark btn-btn-lg">Edit</button> 
+            <td><button [routerLink]="['/editfaculty',i.id,this.id,this.name]"  class="btn-dark btn-btn-lg">Edit</button> 
             &nbsp;&nbsp;<button  class="btn-dark btn-btn-lg"(click)="delete(i.id)">Delete</button></td>
                
          </tbody>
