@@ -28,6 +28,9 @@ reload(){
     
   
   }
+  ngAfterViewInit(){
+    this.reload();
+  }
    
   
 
