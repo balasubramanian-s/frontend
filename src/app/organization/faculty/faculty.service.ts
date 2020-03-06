@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Faculty } from './Faculty';
+import { Faculty } from 'src/app/model/Faculty';
 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Roles } from 'src/app/faculty/Roles';
+import { Roles } from 'src/app/model/Roles';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +14,19 @@ export class FacultyService {
  
   constructor(private _httpClient: HttpClient) { }
   faculty: Faculty[];
+  
   roles: Roles[];
 
-  getAllFactulty(): Observable<Faculty[]> {
-    return this._httpClient.get<Faculty[]>(`${this.base_url}/faculty`).pipe(map((res: any) => res));
+  getAllFactulty() {
+    return this._httpClient.get(`${this.base_url}/faculty`).pipe(map((res: any) => res));
   }
 
   getFaculty(id: Number) {
-    return this._httpClient.get<Faculty>(`${this.base_url}/faculty/${id}`).pipe(map((res: any) => res));
+    return this._httpClient.get(`${this.base_url}/faculty/${id}`).pipe(map((res: any) => res));
 
   }
   getFacultyByInstitution(id: Number): Observable<Faculty[]> {
-    return this._httpClient.get<Faculty[]>(`${this.base_url}/faculty/institution/${id}`).pipe(map((res: any) => res));
+    return this._httpClient.get(`${this.base_url}/faculty/institution/${id}`).pipe(map((res: any) => res));
 
   }
   deleteFaculty(id: Number): Observable<any> {

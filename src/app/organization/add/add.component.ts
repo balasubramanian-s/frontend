@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ApiService} from '../api.service';
 import{Router} from '@angular/router';
-import {organization} from '../organization';
+import {organization} from 'src/app/model/organization';
 
 import{FormGroup,FormControl} from '@angular/forms';
 

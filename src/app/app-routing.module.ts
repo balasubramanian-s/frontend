@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormComponent } from './organization/form/form.component';
+import { FormComponent } from './organization/update/form.component';
 import{AddComponent} from './organization/add/add.component';
 import{DetailsComponent} from './organization/details/details.component';
 import{OrganizationComponent} from '../app/organization/organization.component';

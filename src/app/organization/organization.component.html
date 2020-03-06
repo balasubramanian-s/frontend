@@ -3,7 +3,7 @@
 <div class="main">
 <h1 class="p-3 mb-2 bg-dark text-white"> Organizations</h1>
 
-<button routerLink="/add" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;" >Add organization</button><br>
+<button routerLink="/add" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;" ><i class="pi pi-plus-circle"></i>Add organization</button><br>
 <br>
 <table border="2" class="table table-striped" >
 <thead>
@@ -31,16 +31,16 @@
 <td>{{org.isActive |status}}</td>
 
 <td>
-    <button [routerLink]="['/edit',org.id]" class="btn-dark">Edit</button>
-    &nbsp;<button (click)="delete(org.id)"class="btn-dark">Delete</button>&nbsp;
+    <i [routerLink]="['/edit',org.id]" class="pi pi-pencil" style="font-size: 2em "></i>
+    &nbsp;<i (click)="delete(org.id)"class="pi pi-minus-circle" style="font-size: 2em"></i>&nbsp;
    
 
 <td>
-    <button [routerLink]="['/faculty',org.id,org.name]" class="btn-dark btn-btn-lg" > View</button>
+    <i [routerLink]="['/faculty',org.id,org.name]" class="pi pi-eye" style="font-size: 2em " > </i>
     
 </td>
 <td>
-    <button [routerLink]="['/students',org.id]" class="btn-dark btn-btn-lg">Manage</button>
+    <i [routerLink]="['/students',org.id]" class="pi pi-users" style="font-size: 2em " ></i>
 </td>
 </tr>
 </tbody>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { findIndex } from 'rxjs/operators';
+
 import { FacultyService } from 'src/app/organization/faculty/faculty.service';
-import { Roles } from '../Roles';
-import { Faculty } from 'src/app/organization/faculty/Faculty';
+import { Roles } from 'src/app/model/Roles';
+import { Faculty } from 'src/app/model/Faculty';
 
 
 

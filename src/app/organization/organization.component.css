@@ -5,3 +5,7 @@
 h1{
   color: #3F51B5;
 } */
+
+th,td{
+  text-align: center;
+}

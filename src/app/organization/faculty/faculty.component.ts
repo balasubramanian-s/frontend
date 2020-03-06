@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FacultyService } from './faculty.service';
-import { Faculty } from './Faculty';
-
 import { ActivatedRoute } from '@angular/router';
-import { Roles } from 'src/app/faculty/Roles';
+import { Roles } from 'src/app/model/Roles';
 
 @Component({
   selector: 'app-faculty',
@@ -12,7 +10,8 @@ import { Roles } from 'src/app/faculty/Roles';
   providers:[FacultyService]
 })
 export class FacultyComponent implements OnInit {
-  faculty:Faculty[]; 
+ 
+  faculty:Object[]; 
   id:Number;
   flag=false;
   name:string;

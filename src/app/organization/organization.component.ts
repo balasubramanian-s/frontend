@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {ApiService} from './api.service';
-import {organization} from './organization';
+import {organization} from 'src/app/model/organization';
 import {Router} from '@angular/router'
 
 

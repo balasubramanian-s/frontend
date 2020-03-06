@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import{FormGroup,FormControl} from '@angular/forms';
-import { organization } from '../organization';
+import { organization } from 'src/app/model/organization';
 import{ApiService} from '../api.service';
 import{Router,ActivatedRoute,ParamMap} from '@angular/router';
 

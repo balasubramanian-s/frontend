@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{FacultyService} from 'src/app/organization/faculty/faculty.service';
-import { Faculty } from 'src/app/organization/faculty/Faculty';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   providers:[FacultyService]
 })
 export class AllFacultyComponent implements OnInit {
-  faculty:Faculty[];
+  faculty:object[];
   flag=false;
   name:string[];
   
@@ -18,7 +18,7 @@ export class AllFacultyComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this._facultyService.getAllFactulty().subscribe((data:Faculty[])=>{this.faculty=data,this.flag=true});
+    this._facultyService.getAllFactulty().subscribe((data:Object[])=>{this.faculty=data,this.flag=true});
   }
 
 }

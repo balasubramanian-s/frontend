@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import{HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrganizationComponent } from './organization/organization.component';
-import { FormComponent } from './organization/form/form.component';
+import { FormComponent } from './organization/update/form.component';
 import{ReactiveFormsModule} from '@angular/forms';
 import{ApiService} from './organization/api.service';
 import { DetailsComponent } from './organization/details/details.component';
@@ -57,6 +58,7 @@ import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.componen
     NgbModule,
     NgbAlertModule,
     CommonModule,
+
     RouterModule.forRoot([])
   ],
   providers: [ApiService,FacultyService],
