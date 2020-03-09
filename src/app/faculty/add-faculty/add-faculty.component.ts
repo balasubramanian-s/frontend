@@ -31,18 +31,18 @@ export class AddFacultyComponent implements OnInit {
   facultyform = new FormGroup({
     employee_id: new FormControl(),
     institution_id: new FormControl(),
-    first_name: new FormControl(null,Validators.required),
-    last_name: new FormControl(null,Validators.required),
-    dob: new FormControl(null,Validators.required),
-    email: new FormControl(null,Validators.required),
-    mobile_no: new FormControl(null,Validators.required),
-    role_id: new FormControl(null,Validators.required),
+    first_name: new FormControl('',Validators.required),
+    last_name: new FormControl('',Validators.required),
+    dob: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    mobile_no: new FormControl('',Validators.required),
+    role_id: new FormControl('',Validators.required),
 
 
   });
   save() {
     this.facultyform.patchValue({ institution_id: this.id });
-    console.log("Before");
+    //console.log("Before");
     console.log(this.facultyform.value);
     this.facultyObj = this.facultyform.value;
     console.log("After");

@@ -27,10 +27,15 @@ import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './faculty/roles/roles.component';
-import { AddRolesComponent } from './faculty/roles/add-roles/add-roles.component';
+
 import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
 
-
+//PrimeNg Modules
+import {TabViewModule} from 'primeng/tabview';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,7 @@ import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.componen
     StudentsComponent,   
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, AddRolesComponent, EditfacultyComponent, 
+    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, 
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,11 @@ import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.componen
     NgbModule,
     NgbAlertModule,
     CommonModule,
-
+    TabViewModule,
+    TabMenuModule,
+    SidebarModule,
+    ButtonModule,
+    TableModule,
     RouterModule.forRoot([])
   ],
   providers: [ApiService,FacultyService],

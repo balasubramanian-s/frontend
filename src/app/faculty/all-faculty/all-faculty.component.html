@@ -29,8 +29,8 @@
      <td>{{i.dob}}</td>
      <td>{{i.email}}</td>
      <td>{{i.mobile_no}}</td>
-     <td>{{i.createdon}}</td>
-     <td>{{i.modifiedon}}</td>
+     <td>{{i.createdon | date:'medium'}}</td>
+     <td>{{i.modifiedon  | date:'medium'}}</td>
      <td><i [routerLink]="['/editfaculty',i.id,this.i.org.id,this.i.org.name]" class="pi pi-pencil" style="font-size: 2em"></i>
       &nbsp;&nbsp;<i  (click)="delete(i.id)" class="pi pi-trash" style="font-size: 2em"></i></td>
      

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FacultyService } from './faculty.service';
 import { ActivatedRoute } from '@angular/router';
 import { Roles } from 'src/app/model/Roles';
-
+import {TableModule} from 'primeng/table';
 @Component({
   selector: 'app-faculty',
   templateUrl: './faculty.component.html',
@@ -40,7 +40,7 @@ delete(id:Number)
 {
   this.fac.deleteFaculty(id).subscribe(
     data => {
-      console.log(data);
+      alert("Deleted ");
       this.getbyInst();    
     });
 

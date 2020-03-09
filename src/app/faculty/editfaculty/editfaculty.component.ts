@@ -39,8 +39,7 @@ editform=new FormGroup({
   email: new FormControl(),
   mobile_no: new FormControl(),
   role_id: new FormControl(),
-  createdon:new FormControl()
-
+  
 }) 
 update(){
   console.log(this.editform.value);

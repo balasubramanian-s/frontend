@@ -1,13 +1,9 @@
 
-<div id="sidebar" >
-    <div id="content">
-          
-        <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/home'] ">Home</button></aside>       
-    </div>
-    <div>
-        <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/faculty'] ">Employees</button></aside> 
-    </div>
-    <div>
-        <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/roles'] ">Roles</button></aside> 
-    </div>
-</div>
+<button type="text" (click)="sidebar = true"  label="Show" class="btn btn-primary"><i class="pi pi-align-justify " style="font-size: 1.5rem;"></i></button>
+<p-sidebar [(visible)]="sidebar" position="left" [style]="{width:'20em'}">
+    <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/home'] ">Home</button></aside>    
+    <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/faculty'] ">Employees</button></aside> 
+    <aside> <button  class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/roles'] ">Roles</button></aside> 
+   
+
+</p-sidebar>
