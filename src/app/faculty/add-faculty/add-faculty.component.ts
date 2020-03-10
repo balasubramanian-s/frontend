@@ -42,12 +42,8 @@ export class AddFacultyComponent implements OnInit {
   });
   save() {
     this.facultyform.patchValue({ institution_id: this.id });
-    //console.log("Before");
-    console.log(this.facultyform.value);
     this.facultyObj = this.facultyform.value;
-    console.log("After");
-    console.log(this.facultyObj);
-    this.facultyService.addFaculty(this.facultyObj).subscribe((data: any) => this.router.navigate(['/faculty', this.id, this.name]))
+    this.facultyService.addFaculty(this.facultyObj).subscribe(data =>this.router.navigate(['/faculty', this.id, this.name]))
 
   }
   role(id: number) {

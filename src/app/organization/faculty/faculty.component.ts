@@ -16,6 +16,7 @@ export class FacultyComponent implements OnInit {
   flag=false;
   name:string;
   role:Roles;
+  ask;
   constructor(private fac:FacultyService,private _activatedroute:ActivatedRoute) { 
     
   }
@@ -27,7 +28,7 @@ export class FacultyComponent implements OnInit {
 getbyInst(){
   this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
   this.name=this._activatedroute.snapshot.paramMap.get('name');
-  this.fac.getFacultyByInstitution(this.id).subscribe(data =>{this.faculty=data;this.faculty==null?this.flag=false:this.flag=true;});//console.log(this.faculty) ;
+  this.fac.getFacultyByInstitution(this.id).subscribe(data =>{this.faculty=data;this.faculty==null?this.flag=false:this.flag=true});//console.log(this.faculty) ;
   
   
 }
@@ -38,10 +39,10 @@ getRole(id:number){
 
 delete(id:Number)
 {
-  this.fac.deleteFaculty(id).subscribe(
-    data => {
-      alert("Deleted ");
-      this.getbyInst();    
-    });
+  this.ask=confirm("Press OK to Delete ");
+  if(this.ask){
+    this.fac.deleteFaculty(id).subscribe(data => {this.getbyInst()});
+     }
+ 
 
 }}

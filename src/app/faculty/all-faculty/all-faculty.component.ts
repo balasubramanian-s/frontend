@@ -14,7 +14,7 @@ export class AllFacultyComponent implements OnInit {
   faculty:FacultyObj[];
   flag=false;
   name:string[];
-  
+  ask;
   constructor(private _facultyService:FacultyService,private _activatedroute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,10 +26,11 @@ export class AllFacultyComponent implements OnInit {
   }
   delete(id:Number)
   {
-    this._facultyService.deleteFaculty(id).subscribe(
-      data => {
-        console.log(data);this.load()
-            
-      });
+    this.ask=confirm("Press OK to Delete");
+    if(this.ask){
+      this._facultyService.deleteFaculty(id).subscribe(data => this.load());
+
+    }
+   
 }
 }

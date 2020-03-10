@@ -5,12 +5,15 @@ import { FacultyService } from 'src/app/organization/faculty/faculty.service';
 import { Faculty } from 'src/app/model/Faculty';
 import { Roles } from 'src/app/model/Roles';
 import { FacultyObj } from 'src/app/model/FacultyObj';
+import { error } from '@angular/compiler/src/util';
+import { organization } from 'src/app/model/organization';
+import { ApiService } from 'src/app/organization/api.service';
 
 @Component({
   selector: 'app-editfaculty',
   templateUrl: './editfaculty.component.html',
   styleUrls: ['./editfaculty.component.css'],
-  providers:[FacultyService]
+  providers:[FacultyService,ApiService]
 })
 export class EditfacultyComponent implements OnInit {
   flag=false;
@@ -20,7 +23,9 @@ org_name:String;
 Obj:FacultyObj;
 faculty:Faculty;
 roles: Roles[];
-  constructor(private activatedRoute:ActivatedRoute,private facultyService:FacultyService,private router:Router) { }
+orgObj:organization[];
+error;
+  constructor(private activatedRoute:ActivatedRoute,private facultyService:FacultyService,private orgService:ApiService,private router:Router) { }
 
   ngOnInit(): void {
     this.id=parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
@@ -28,6 +33,9 @@ roles: Roles[];
     this.org_name=this.activatedRoute.snapshot.paramMap.get('name');
     this.facultyService.getFaculty(this.id).subscribe(data=>{this.Obj=data,this.Obj==null?this.flag=false:this.flag=true,this.load();});
     this.facultyService.getRoles().subscribe((data: any) => { this.roles = data });
+    this.orgService.getAllOrg().subscribe((data:any)=>{this.orgObj=data});
+   
+
   }
 editform=new FormGroup({
   id:new FormControl(),
@@ -41,14 +49,23 @@ editform=new FormGroup({
   role_id: new FormControl(),
   
 }) 
+
+
+
 update(){
-  console.log(this.editform.value);
+ // console.log(this.editform.value);
   this.faculty=this.editform.value;
-  this.facultyService.editFaculty(this.faculty).subscribe(data=>this.router.navigate(['/faculty', this.org_id, this.org_name]));
+  
+  this.facultyService.editFaculty(this.faculty).subscribe(data=>this.router.navigate(['/faculty', this.org_id, this.org_name]),error => this.error=error);
+
 }
 role(id: number) {
   this.editform.patchValue({ role_id: id })
 }
+organization(id:number){
+  this.editform.patchValue({institution_id:id});
+}
+
 load(){
   this.editform.patchValue({
     id:this.Obj.id,
@@ -61,6 +78,7 @@ load(){
     mobile_no:this.Obj.mobile_no,
     role_id:this.Obj.roles.id,
     
-  })
+  });
+  
 }
 }

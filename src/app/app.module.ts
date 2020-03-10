@@ -27,7 +27,6 @@ import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './faculty/roles/roles.component';
-
 import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
 
 //PrimeNg Modules

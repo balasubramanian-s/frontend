@@ -64,13 +64,9 @@ export class FormComponent implements OnInit {
   }
   update(){
     
-    console.log(this.editForm.value);
-    console.log("Previous Data")
-    console.log(this.org);
     this.org=this.editForm.value;
-    this.org.id=this.id;    
-    console.log("Updated Data")    
-    this._api.editOrg(this.org).subscribe(data=>{console.log(data);});
+    this.org.id=this.id;        
+    this._api.editOrg(this.org).subscribe();
     this._router.navigateByUrl('home');
 
 
