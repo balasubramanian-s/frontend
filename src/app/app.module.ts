@@ -36,6 +36,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,7 @@ import {TableModule} from 'primeng/table';
     StudentsComponent,   
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, 
+    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent,  
   ],
   imports: [
     BrowserModule,

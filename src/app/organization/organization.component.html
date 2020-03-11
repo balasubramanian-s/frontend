@@ -28,7 +28,8 @@
 <td>{{org.university}} </td>
 <td>{{org.createdon | date:'medium'}}</td>
 <td>{{org.modifiedon| date:'medium'}}</td>
-<td>{{org.isActive |status}}</td>
+<td><button  type="button" (click)=changeStatus(org.id) [ngClass]="org.isActive?'btn btn-success':'btn btn-danger'">{{org.isActive | status}}</button></td>
+<!-- <td>{{org.isActive |status}}</td>class='btn btn-success'  -->
 
 <td>
     <i [routerLink]="['/edit',org.id]" class="pi pi-pencil" style="font-size: 2em "></i>

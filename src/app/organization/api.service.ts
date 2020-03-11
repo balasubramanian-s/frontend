@@ -54,9 +54,11 @@ export class ApiService {
     return this._httpClient.delete(`${this.org_url}/${id}`,{responseType:"text"});
    }
 
- 
+ //api call to change status,Input :Organization Id
 
-
+   statusOrg(id:Number){
+     return this._httpClient.put(`${this.org_url}/status/${id}`,{responseType:"text"});
+   }
 
    }
 
