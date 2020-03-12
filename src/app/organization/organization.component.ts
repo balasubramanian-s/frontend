@@ -45,7 +45,7 @@ delete(id:Number){
 
 
 changeStatus(id:Number){
-  console.log("Function works");
+ 
   this._apiService.statusOrg(id).subscribe(data=>{this.reload()});
 }
 

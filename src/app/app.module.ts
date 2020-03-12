@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { StudentsComponent } from './students/students.component';
+
 import { FacultyComponent } from './organization/faculty/faculty.component';
 import { FacultyService } from './organization/faculty/faculty.service';
 import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
@@ -35,7 +35,16 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-
+import { AllStudentsComponent } from './Students/all-students/all-students.component';
+import { OrgStudentsComponent } from './Students/org-students/org-students.component';
+import { AddStudentsComponent } from './Students/add-students/add-students.component';
+import { EditStudentsComponent } from './Students/edit-students/edit-students.component';
+import {ToastModule} from 'primeng/toast';
+import {PanelModule} from 'primeng/panel';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -47,10 +56,10 @@ import {TableModule} from 'primeng/table';
     LoginComponent,
     YesNoPipe,
     StatusPipe,   
-    StudentsComponent,   
+       
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent,  
+    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, AllStudentsComponent, OrgStudentsComponent, AddStudentsComponent, EditStudentsComponent,  
   ],
   imports: [
     BrowserModule,
@@ -68,6 +77,8 @@ import {TableModule} from 'primeng/table';
     SidebarModule,
     ButtonModule,
     TableModule,
+    ToastModule,PanelModule,MessagesModule,MessageModule,DropdownModule,CalendarModule,
+    
     RouterModule.forRoot([])
   ],
   providers: [ApiService,FacultyService],

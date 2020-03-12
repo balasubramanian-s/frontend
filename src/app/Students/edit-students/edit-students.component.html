@@ -1,0 +1,33 @@
+<app-sidebar></app-sidebar>
+<div class="main">
+
+<form [formGroup]="editform" *ngIf="flag" (ngSubmit)="update()">
+
+    <label>FirstName</label>&nbsp;<input type="text" formControlName="fname" > <br><br>
+    <label>LastName</label>&nbsp;<input type="text" formControlName="lname" /><br><br>
+    <label>DateOfBirth</label>&nbsp;<input type="date" formControlName="dob" /><br><br>
+    <label>Registration No</label>&nbsp;<input type="text" formControlName="redgno"><br><br>
+    <label>Email</label>&nbsp;<input type="email" formControlName="email" /><br><br>
+    <label>MobileNo</label>&nbsp;<input type="tel" formControlName="mobileno" /><br><br>
+    
+
+
+
+
+    <label>Organization </label>&nbsp;&nbsp;<select (change)="organization($event.target.value)"
+         class="btn btn-dark dropdown-toggle border border-dark text-white" formControlName="institution_id">
+         <option value="" disabled></option>
+         <option *ngFor="let org of orgObj;" [value]="org.id">{{this.org.name}}</option>
+      </select><br><br>
+    
+   
+      <label>Year </label>&nbsp;&nbsp;
+      <p-dropdown [options]="years" formControlName="year"></p-dropdown>
+   <br><br>
+      <button type="submit" class="btn btn-dark">Save</button>
+
+    <!-- [routerLink]="['/faculty',this.id,this.name]" -->
+
+ </form>
+    
+</div>

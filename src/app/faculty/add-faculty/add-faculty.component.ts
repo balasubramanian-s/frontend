@@ -5,6 +5,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FacultyService } from 'src/app/organization/faculty/faculty.service';
 import { Roles } from 'src/app/model/Roles';
 import { Faculty } from 'src/app/model/Faculty';
+import { organization } from 'src/app/model/organization';
+import { ApiService } from 'src/app/organization/api.service';
 
 
 
@@ -12,44 +14,60 @@ import { Faculty } from 'src/app/model/Faculty';
   selector: 'app-add-faculty',
   templateUrl: './add-faculty.component.html',
   styleUrls: ['./add-faculty.component.css'],
-  providers: [FacultyService]
+  providers: [FacultyService, ApiService]
 })
 export class AddFacultyComponent implements OnInit {
-  id: Number;
-  name: String;
+  orgid: Number;
+  orgname: String;
   roles: Roles[];
   facultyObj: Faculty;
-  constructor(private _activatedroute: ActivatedRoute, private facultyService: FacultyService, private router: Router) { }
+  orgObj: organization[];
+  facultyform: FormGroup;
+  constructor(private _activatedroute: ActivatedRoute, private facultyService: FacultyService, private router: Router, private orgService: ApiService) {
 
-  ngOnInit(): void {
-    this.id = parseInt(this._activatedroute.snapshot.paramMap.get('id'));
-    this.name = this._activatedroute.snapshot.paramMap.get('name');
+
+    this.orgid = parseInt(this._activatedroute.snapshot.paramMap.get('id'));
+    this.orgname = this._activatedroute.snapshot.paramMap.get('name');
     this.facultyService.getRoles().subscribe((data: any) => { this.roles = data });
+    this.orgService.getAllOrg().subscribe((data: any) => { this.orgObj = data });
+
 
   }
 
-  facultyform = new FormGroup({
-    employee_id: new FormControl(),
-    institution_id: new FormControl(),
-    first_name: new FormControl('',Validators.required),
-    last_name: new FormControl('',Validators.required),
-    dob: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    mobile_no: new FormControl('',Validators.required),
-    role_id: new FormControl('',Validators.required),
+  ngOnInit(): void {
+    this.form();
+
+  }
+  form() {
+    this.facultyform = new FormGroup({
+
+      employee_id: new FormControl(),
+      institution_id: new FormControl(),
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      dob: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      mobile_no: new FormControl('', Validators.required),
+      role_id: new FormControl('', Validators.required),
 
 
-  });
+    });
+    this.facultyform.patchValue({ institution_id: this.orgid })
+
+
+  }
   save() {
-    this.facultyform.patchValue({ institution_id: this.id });
+
     this.facultyObj = this.facultyform.value;
-    this.facultyService.addFaculty(this.facultyObj).subscribe(data =>this.router.navigate(['/faculty', this.id, this.name]))
+    this.facultyService.addFaculty(this.facultyObj).subscribe(data =>{ this.orgid && this.orgname!=null? this.router.navigate(['/faculty',this.orgid,this.orgname]): this.router.navigate(['/faculty'])});
 
   }
   role(id: number) {
     this.facultyform.patchValue({ role_id: id })
   }
-
+  organization(id: number) {
+    this.facultyform.patchValue({ institution_id: id });
+  }
 
 
 

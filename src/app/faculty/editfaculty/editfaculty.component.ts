@@ -48,15 +48,14 @@ editform=new FormGroup({
   mobile_no: new FormControl(),
   role_id: new FormControl(),
   
-}) 
+}) ;
 
 
 
 update(){
  // console.log(this.editform.value);
-  this.faculty=this.editform.value;
-  
-  this.facultyService.editFaculty(this.faculty).subscribe(data=>this.router.navigate(['/faculty', this.org_id, this.org_name]),error => this.error=error);
+  this.faculty=this.editform.value;  
+  this.facultyService.editFaculty(this.faculty).subscribe(data=>this.router.navigate(['/faculty']),error => this.error=error);
 
 }
 role(id: number) {

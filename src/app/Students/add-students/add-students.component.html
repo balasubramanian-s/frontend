@@ -1,0 +1,96 @@
+<app-sidebar></app-sidebar>
+
+<h1 class="p-2 mb-2 bg-dark text-white">Add Student Details</h1>
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" style="width: 50%;padding-left: 15%;">
+    <p-panel header="Student Details" styleClass>
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    First Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="fname" placeholder="Required" />
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Firstname is required"
+                        *ngIf="!studentForm.controls['fname'].valid&&studentForm.controls['fname'].dirty"></p-message>
+                </div>
+
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Last Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="lname" placeholder="Required" />
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Lastname is required"
+                        *ngIf="!studentForm.controls['lname'].valid&&studentForm.controls['lname'].dirty">
+                    </p-message>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Registration Number *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="tel" formControlName="redgno" />
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Registration Number is required"
+                        *ngIf="!studentForm.controls['redgno'].valid&&studentForm.controls['redgno'].dirty"></p-message>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Date Of Birth *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="date" formControlName="dob"/>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Email *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="email" placeholder="Required" />
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Mobile No *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="mobileno" placeholder="Required" />
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Year *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <p-dropdown [options]="years" formControlName="year"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Year is required" *ngIf="!studentForm.controls['year'].valid&&studentForm.controls['year'].dirty"></p-message>
+                </div>
+            </div>
+            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-6">
+                    <button pButton type="submit" label="Submit" ></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+           
+
+        </div>
+
+    </p-panel>
+</form>
