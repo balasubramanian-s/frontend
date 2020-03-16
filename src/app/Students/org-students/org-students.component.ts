@@ -21,6 +21,7 @@ ask;
     this.inst_name=this._activatedRoute.snapshot.paramMap.get('name');
     this.load();
   }
+  
   load(){
     this._studentsService.getStudentByInstitution(this.inst_id).subscribe(data=>{this.students=data});
   }
@@ -30,6 +31,7 @@ delete(id:number){
     this._studentsService.deleteStudent(id).subscribe(data=>{this.load(),console.log(data)});
 
   }
+  
 
 }
 }

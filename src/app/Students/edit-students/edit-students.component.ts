@@ -39,7 +39,7 @@ this.years.push({label:'Select Year',value:''});
   editform=new FormGroup({
     id:new FormControl(),
     redgno:new FormControl(),
-    institution_id: new FormControl(),
+    institutionid: new FormControl(),
     fname: new FormControl(),
     lname: new FormControl(),
     dob: new FormControl(),
@@ -49,13 +49,13 @@ this.years.push({label:'Select Year',value:''});
   }) 
   
   organization(id:number){
-    this.editform.patchValue({institution_id:id});
+    this.editform.patchValue({institutionid:id});
   }
 loadValues(){
   this.editform.patchValue({
-    id:this.stud_id,
+    id:this.student.id,
     redgno:this.student.redgno,
-    institution_id:this.student.org.id,
+    institutionid:this.student.org.id,
     fname:this.student.fname,
     lname:this.student.lname,
     dob:this.student.dob,
@@ -70,6 +70,6 @@ update(){
   
   this.saveObj=this.editform.value;
   
-  this._studentsService.addStudent(this.saveObj).subscribe(data=>{this._router.navigate(['/students',this.stud_id,this.student.org.name])})
+  this._studentsService.addStudent(this.saveObj).subscribe(data=>{this._router.navigate(['/students',this.inst_id,this.student.org.name])})
 }
 }

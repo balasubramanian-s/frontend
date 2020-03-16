@@ -30,9 +30,7 @@ this.load();
     name:new FormControl
   });
 
-  delete(id:number){
-this.facultyService.deleteRole(id).subscribe(data=>{alert(+data+" Deleted");});
-  }
+  
  add(){   
  this.role1=this.addrole.value;
 console.log(this.role1);
