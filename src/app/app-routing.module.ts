@@ -18,6 +18,7 @@ import { OrgStudentsComponent } from './Students/org-students/org-students.compo
 import { AllStudentsComponent } from './Students/all-students/all-students.component';
 import { EditStudentsComponent } from './Students/edit-students/edit-students.component';
 import { AddStudentsComponent } from './Students/add-students/add-students.component';
+import { StudentDetailsComponent } from './Students/student-details/student-details.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: "students/:id/:name",
     component: OrgStudentsComponent
   }, 
+  {
+    path:"studentDetails/:id",
+    component:StudentDetailsComponent
+  },
   {
     path:"students/",
     component:AllStudentsComponent

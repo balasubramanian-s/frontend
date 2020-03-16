@@ -45,6 +45,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
+import { StudentDetailsComponent } from './Students/student-details/student-details.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import {CalendarModule} from 'primeng/calendar';
        
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, AllStudentsComponent, OrgStudentsComponent, AddStudentsComponent, EditStudentsComponent,  
+    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, AllStudentsComponent, OrgStudentsComponent, AddStudentsComponent, EditStudentsComponent, StudentDetailsComponent,  
   ],
   imports: [
     BrowserModule,

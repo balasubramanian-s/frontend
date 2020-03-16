@@ -19,7 +19,7 @@ export class ApiService {
     //api call to list all organization ,return type :List of objects
 
     getAllOrg():Observable<organization[]>{
-      return this._httpClient.get<organization[]>(this.org_url).pipe(map((res:any)=>res));
+      return this._httpClient.get<organization[]>(this.org_url).pipe(map((res:any)=>this._org=res));
     }
 
 

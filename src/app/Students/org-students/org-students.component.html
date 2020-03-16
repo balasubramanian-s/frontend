@@ -22,7 +22,7 @@
             <tr *ngFor="let student of students;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{student.redgno}}</td>
-                <td>{{student.fname}}</td>
+                <td><a [routerLink]="['/studentDetails',student.id]">{{student.fname}}</a></td>
                 <td>{{student.lname}}</td>
                 <td>{{student.year}}</td>
                 <td>{{student.dob}}</td>
