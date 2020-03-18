@@ -32,8 +32,7 @@
                 <td><a [routerLink]="['/studentDetails',student.id]">{{student.fname}}</a></td>
                 <td>{{student.lname}}</td>
                 <td>{{student.year}}</td>
-                <td>{{student.org.name}}</td>
-               
+                <td>{{student.org.name}}</td>               
                 <td>{{student.createdon |date:'medium'}}</td>
                 <td>{{student.modifiedon |date:'medium'}}</td>
                 <td><i [routerLink]="['/editStudent',student.id,student.org.id]" class="pi pi-user-edit" style="font-size: 2em"></i> 
