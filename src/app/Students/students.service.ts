@@ -16,7 +16,7 @@ export class StudentsService {
   private base_url = "http://localhost:8083/student";
 
   getAllStudents(): Observable<StudentObj[]> {
-    return this._httpClient.get<StudentObj[]>(`${this.base_url}/getall`).pipe(map((data: StudentObj[]) => {this.s=data; return data; }), catchError(error => { return throwError('Something Went Wrong') }));
+    return this._httpClient.get<StudentObj[]>(`${this.base_url}/getall`).pipe(map((data: StudentObj[]) => { this.s = data; return data; }), catchError(error => { return throwError('Something Went Wrong') }));
   }
 
   getStudent(id: number): Observable<StudentObj> {
@@ -25,8 +25,11 @@ export class StudentsService {
   getStudentByInstitution(inst_id: number): Observable<StudentObj[]> {
     return this._httpClient.get<StudentObj[]>(`${this.base_url}/institution/${inst_id}`).pipe(map((data: StudentObj[]) => { return data; }), catchError(error => { return throwError('Something Went Wrong') }));
   }
-  getStudentByYear(inst_id: number, year: number): Observable<StudentObj[]> {
+  getStudentByInstYear(inst_id: number, year: number): Observable<StudentObj[]> {
     return this._httpClient.get<StudentObj[]>(`${this.base_url}/year/${inst_id}/${year}`).pipe(map((data: StudentObj[]) => { return data; }), catchError(error => { return throwError('Something Went Wrong') }));
+  }
+  getStudentByYear(year: number): Observable<StudentObj[]> {
+    return this._httpClient.get<StudentObj[]>(`${this.base_url}/year/${year}`).pipe(map((data: StudentObj[]) => { return data; }), catchError(error => { return throwError('Something Went Wrong') }));
   }
   addStudent(obj: Student): Observable<Student> {
     console.log(obj);

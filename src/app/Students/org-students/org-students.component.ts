@@ -4,7 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { StudentObj } from 'src/app/model/StudentObj';
 import { EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-
+import * as _ from 'lodash';
+import { SelectItem } from 'primeng/api/selectitem';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { ResourceLoader } from '@angular/compiler';
 @Component({
   selector: 'app-org-students',
   templateUrl: './org-students.component.html',
@@ -16,7 +19,11 @@ export class OrgStudentsComponent implements OnInit {
   inst_name;
   students: StudentObj[];
   ask;
-  constructor(private _studentsService: StudentsService, private _activatedRoute: ActivatedRoute, private router: Router,private _dataService:DataService) {
+  flag=false;
+  yearForm:FormGroup;
+  years:SelectItem[];
+  selectedyear;
+  constructor(private fb: FormBuilder,private _studentsService: StudentsService, private _activatedRoute: ActivatedRoute, private router: Router,private _dataService:DataService) {
     
 
    }
@@ -24,15 +31,23 @@ export class OrgStudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.inst_id = this._activatedRoute.snapshot.paramMap.get('id');
-    this.inst_name = this._activatedRoute.snapshot.paramMap.get('name');
+    this.inst_name = this._activatedRoute.snapshot.paramMap.get('name');    
+   
+    this.years=[]   
+    this.years.push({label:'All',value:'0'})
+    this.years.push({label:'First Year',value:'1'});
+    this.years.push({label:'Second Year',value:'2'});
+    this.years.push({label:'Third Year',value:'3'});
+    this.years.push({label:'Fourth Year',value:'4'});
     this.load();
   }
 
-  load() {
-    var s=new DataService();
-    this._studentsService.getStudentByInstitution(this.inst_id).subscribe(data => { this.students = data;});
-    s.studs=this.students;
-    console.log(s.studs);
+  load() {    
+      this._studentsService.getStudentByInstitution(this.inst_id).subscribe(data => { this.students = data;_.isEmpty(this.students)?this.flag=false:this.flag=true});
+     
+  }
+  reload(){
+    this._studentsService.getStudentByInstYear(this.inst_id,this.selectedyear).subscribe(data=>{this.students=data;_.isEmpty(this.students)?this.flag=false:this.flag=true});
   }
   delete(id: number) {
     this.ask = confirm("Are You Sure?");
@@ -42,6 +57,10 @@ export class OrgStudentsComponent implements OnInit {
     }
 
    
+  }
+  year(id:number){
+  this.selectedyear=id;
+  this.selectedyear==0?this.load():this.reload();
   }
   
 }

@@ -5,8 +5,8 @@
 <button pButton type="button" label="Add Organization" class="ui-button-rounded ui-button-success" style="float: right;" routerLink="/add" icon="pi pi-plus-circle"></button>
 <!-- <button routerLink="/add" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;" ><i class="pi pi-plus-circle"></i>Add organization</button><br> -->
 <br>
-<table border="2" class="table table-striped" >
-<thead>
+<table  class="table table-striped" >
+<thead  border="2">
     <tr >
         <th scope="col">No </th>
         <th scope="col">Name</th>
@@ -19,9 +19,14 @@
         <th scope="col">Employees</th>
         <th scope="col">Students</th>
     </tr>
+   
 </thead>
-    <tbody   *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last," class="align-middle" >
- <tr >     
+<tr *ngIf=!flag style="width: 100%;">No Data</tr>
+
+
+    <tbody *ngIf=flag class="align-middle" border="2" >
+       
+ <tr  *ngFor="let org of this.org;let i=index; let isOdd=odd;let isLast=last,">     
 <th scope="row">{{i+1}}</th>
 <td><a [routerLink]="['/details',org.id]">{{org.name}}</a> </td> 
 <td>{{org.alias}} </td>

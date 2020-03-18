@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{ApiService}from '../api.service';
 import { organization } from 'src/app/model/organization';
 import{Router,ActivatedRoute,ParamMap} from '@angular/router';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -20,7 +20,7 @@ export class DetailsComponent implements OnInit {
    }
 load(){
   this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
-    this._api.getOrg(this.id).subscribe(data=>{this.org=data;this.flag=true; });
+    this._api.getOrg(this.id).subscribe(data=>{this.org=data;_.isEmpty(this.org)?this.flag=true:this.flag=true; });
 
 }
   ngOnInit(): void {

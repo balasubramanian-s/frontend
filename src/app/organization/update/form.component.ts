@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
   
   this. editForm=new FormGroup({
    
-    name:new FormControl({value:'',disabled:true}), 
+    name:new FormControl(), 
     alias:new FormControl(),
     university:new FormControl(),
     createdon:new FormControl,

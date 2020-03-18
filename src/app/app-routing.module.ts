@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: "faculty/:id/:name",
     component: FacultyComponent
+  },{
+    path:"allstudents",
+    component:AllStudentsComponent
+
   },
   {
     path: "students/:id/:name",
@@ -69,6 +73,10 @@ const routes: Routes = [
   },
   { path:"addStudent/:id/:name",
   component:AddStudentsComponent
+
+  },{
+    path:"addstudent",
+    component:AddStudentsComponent
 
   },
   {

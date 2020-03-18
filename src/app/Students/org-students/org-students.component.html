@@ -1,6 +1,14 @@
 <app-sidebar></app-sidebar>
 <div class="main">
     <h1 class="p-3 mb-2 bg-dark text-white"> {{inst_name}} Students </h1>
+
+
+    <label>Show by Year </label>&nbsp;&nbsp;<select (change)="year($event.target.value)"
+    class="btn btn-dark dropdown-toggle border border-dark text-white" >
+    
+    <option *ngFor="let y of years;" [value]="y.value">{{this.y.label}}</option>
+ </select><br><br>
+
     <button [routerLink]="['/addStudent',inst_id,inst_name]" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;">Add Students</button><br>
     <table class="table table-striped">
         <thead>
@@ -18,7 +26,9 @@
                <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        
+            <tr *ngIf=!flag >No Data</tr>
+         <tbody *ngIf=flag >
             <tr *ngFor="let student of students;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{student.redgno}}</td>

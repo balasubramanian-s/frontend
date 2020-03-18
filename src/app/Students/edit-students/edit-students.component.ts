@@ -70,6 +70,7 @@ update(){
   
   this.saveObj=this.editform.value;
   
-  this._studentsService.addStudent(this.saveObj).subscribe(data=>{this._router.navigate(['/students',this.inst_id,this.student.org.name])})
+  this._studentsService.addStudent(this.saveObj).subscribe(data=>{
+    this.stud_id==null?this._router.navigate(['/students',this.inst_id,this.student.org.name]):this._router.navigate(['/allstudents'])})
 }
 }
