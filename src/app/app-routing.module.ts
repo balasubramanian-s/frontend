@@ -20,89 +20,109 @@ import { EditStudentsComponent } from './Students/edit-students/edit-students.co
 import { AddStudentsComponent } from './Students/add-students/add-students.component';
 import { StudentDetailsComponent } from './Students/student-details/student-details.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: LoginComponent
+   
   },
   {
     path:'logout',
-    component:LogoutComponent
+    component:LogoutComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "home",
     component: OrganizationComponent,
+    canActivate:[AuthGuard]
 
   },
   {
     path: "edit/:id",
-    component: FormComponent
+    component: FormComponent,
+    canActivate:[AuthGuard]
   },
 
   {
     path: "add",
-    component: AddComponent
+    component: AddComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "details/:id",
-    component: DetailsComponent
+    component: DetailsComponent,
+    canActivate:[AuthGuard]
   },
 
   {
     path: "faculty/:id/:name",
-    component: FacultyComponent
+    component: FacultyComponent,
+    canActivate:[AuthGuard]
   },{
     path:"allstudents",
-    component:AllStudentsComponent
+    component:AllStudentsComponent,
+    canActivate:[AuthGuard]
 
   },
   {
     path: "students/:id/:name",
-    component: OrgStudentsComponent
+    component: OrgStudentsComponent,
+    canActivate:[AuthGuard]
   }, 
   {
     path:"studentDetails/:id",
-    component:StudentDetailsComponent
+    component:StudentDetailsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:"students/",
-    component:AllStudentsComponent
+    component:AllStudentsComponent,
+    canActivate:[AuthGuard]
 
   },
   {
     path:"editStudent/:id/:instid",
-    component:EditStudentsComponent
+    component:EditStudentsComponent,
+    canActivate:[AuthGuard]
 
   },
   { path:"addStudent/:id/:name",
-  component:AddStudentsComponent
+  component:AddStudentsComponent,
+  canActivate:[AuthGuard]
 
   },{
     path:"addstudent",
-    component:AddStudentsComponent
+    component:AddStudentsComponent,
+    canActivate:[AuthGuard]
 
   },
   {
     path: "faculty",
-    component: AllFacultyComponent
+    component: AllFacultyComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "addFaculties/:id/:name",
-    component: AddFacultyComponent
+    component: AddFacultyComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "addFaculties",
-    component: AddFacultyComponent
+    component: AddFacultyComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "editfaculty/:id/:id1/:name",
-    component: EditfacultyComponent
+    component: EditfacultyComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: "roles",
     component: RolesComponent,
+    canActivate:[AuthGuard]
 
   }
 
