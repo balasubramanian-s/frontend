@@ -19,12 +19,17 @@ import { AllStudentsComponent } from './Students/all-students/all-students.compo
 import { EditStudentsComponent } from './Students/edit-students/edit-students.component';
 import { AddStudentsComponent } from './Students/add-students/add-students.component';
 import { StudentDetailsComponent } from './Students/student-details/student-details.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+  },
+  {
+    path:'logout',
+    component:LogoutComponent
   },
   {
     path: "home",

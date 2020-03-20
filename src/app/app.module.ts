@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
 import { FacultyComponent } from './organization/faculty/faculty.component';
 import { FacultyService } from './organization/faculty/faculty.service';
 import { AllFacultyComponent } from './faculty/all-faculty/all-faculty.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 import { AddFacultyComponent } from './faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './faculty/roles/roles.component';
 import { EditfacultyComponent } from './faculty/editfaculty/editfaculty.component';
@@ -46,6 +46,8 @@ import {MessageModule} from 'primeng/message';
 import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import { StudentDetailsComponent } from './Students/student-details/student-details.component';
+import { LogoutComponent } from './logout/logout.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { StudentDetailsComponent } from './Students/student-details/student-deta
        
     FacultyComponent,   
     AllFacultyComponent,   
-    SidebarComponent, AddFacultyComponent, RolesComponent, EditfacultyComponent, AllStudentsComponent, OrgStudentsComponent, AddStudentsComponent, EditStudentsComponent, StudentDetailsComponent,  
+    AddFacultyComponent, RolesComponent, EditfacultyComponent, AllStudentsComponent, OrgStudentsComponent, AddStudentsComponent, EditStudentsComponent, StudentDetailsComponent, LogoutComponent, HeaderComponent,  
   ],
   imports: [
     BrowserModule,

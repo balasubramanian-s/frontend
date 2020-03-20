@@ -1,0 +1,18 @@
+
+
+<p-sidebar [(visible)]="sidebar" position="left" [style]="{width:'20em'}">
+<aside> <button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/faculty'] ">Employees</button></aside>
+<aside> <button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/roles'] ">Roles</button></aside>
+<aside><button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/allstudents']">Students</button></aside>
+</p-sidebar>
+<h1 class="p-3 mb-2 bg-dark text-white" style="font-size: 2rem;">
+    <i *ngIf=" _auth.isUserLoggedIn()" (click)="sidebar = true" label="Show" class="pi  pi-align-justify "style="font-size: 2rem;"></i>
+     Revature 
+   <span style="float: right;">
+    <i  *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/logout']" class="pi pi-sign-out" style="font-size: 1.5rem;">Logout</i>&nbsp; 
+    
+     <i  *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/home'] " class="pi pi-home" style="font-size: 1.5rem;">Home</i></span>
+</h1>
+
+
+<router-outlet></router-outlet>
