@@ -49,6 +49,9 @@ import { StudentDetailsComponent } from './Students/student-details/student-deta
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 
+import {  HTTP_INTERCEPTORS  } from '@angular/common/http';
+import {HttpConfigInterceptor} from './Config/httpconfig.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,12 +82,12 @@ import { HeaderComponent } from './header/header.component';
     TabMenuModule,
     SidebarModule,
     ButtonModule,
-    TableModule,
+    TableModule, 
     ToastModule,PanelModule,MessagesModule,MessageModule,DropdownModule,CalendarModule,
     
     RouterModule.forRoot([])
   ],
-  providers: [ApiService,FacultyService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},ApiService,FacultyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
