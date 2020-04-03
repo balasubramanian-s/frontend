@@ -10,6 +10,7 @@ import { error } from '@angular/compiler/src/util';
 
 export class AuthenticationService {
 token;
+role=[];
 url="http://localhost:8080/authenticate"
   
   constructor(private _httpClient:HttpClient) { }
@@ -20,10 +21,11 @@ return  this._httpClient.post<Jwt>(this.url,{username,password}).pipe(map((res:a
  
 authenticate(username, password) {
 
-this.getjwt(username,password).subscribe((data:any)=>this.token=data.jwt);
+this.getjwt(username,password).subscribe((data:any)=>{this.token=data});
     if (this.token!=null) {
       sessionStorage.setItem('username', username);
       sessionStorage.setItem('token',this.token);
+
       return true;
     } else {
       return false;
@@ -41,36 +43,9 @@ this.getjwt(username,password).subscribe((data:any)=>this.token=data.jwt);
   }
 
 
-/*
 
-  login(username,password){
-    return this._httpClient.post(this.url,{username,password}).pipe(map(res => this.setSession));
-  }
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn,'second');
-
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-}   
-public isLoggedIn() {
-  return moment().isBefore(this.getExpiration());
 }
 
-isLoggedOut() {
-  return !this.isLoggedIn();
-}
-
-getExpiration() {
-  const expiration = localStorage.getItem("expires_at");
-  const expiresAt = JSON.parse(expiration);
-  return moment(expiresAt);
-}    
- */
-}
-export class User{
-  private username:String;
-  private password:String;
-}
 export class Jwt{
   private jwt:any;
 }

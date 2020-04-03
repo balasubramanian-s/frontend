@@ -16,8 +16,8 @@ export class HttpConfigInterceptor  implements HttpInterceptor {
             
             req = req.clone({setHeaders: { 'Authorization':authHeader+idToken }  });
             req = req.clone({ headers: req.headers.set('Access-Control-Allow-Origin', '*') });
-             req = req.clone({ headers: req.headers.set('Content-Type', 'application/json')});
-            console.log(req)
+           
+            
         }
 
             if (!req.headers.has('Content-Type')) {
