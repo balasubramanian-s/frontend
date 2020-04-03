@@ -23,18 +23,18 @@ export class ApiService {
     //api call to list all organization ,return type :List of objects
 
     getAllOrg():Observable<any>{
-     this.Token = sessionStorage.getItem("token");
-     const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET'};
-      return this._httpClient.get<any>(this.org_url,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+    // this.Token = sessionStorage.getItem("token");
+     //const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET'};
+      return this._httpClient.get<any>(this.org_url).pipe(map((res:any)=>res.data),catchError(this.handleError));
     }
 
 
     //api call to get organization by id, input : Integer id,return type:org object
 
-    getOrg(id:Number):Observable<organization>{
+    getOrg(id:Number):Observable<any>{
       this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-      return this._httpClient.get<organization>(`${this.org_url}/${id}`,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+     const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET'};
+      return this._httpClient.get<any>(`${this.org_url}/${id}`,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
        
           }
 

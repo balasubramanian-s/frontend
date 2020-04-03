@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrganizationComponent } from './layout/organization/organization.component';
@@ -28,7 +28,7 @@ import { AllFacultyComponent } from './layout/faculty/all-faculty/all-faculty.co
 import { AddFacultyComponent } from './layout/faculty/add-faculty/add-faculty.component';
 import { RolesComponent } from './layout/faculty/roles/roles.component';
 import { EditfacultyComponent } from './layout/faculty/editfaculty/editfaculty.component';
-
+import {httpInterceptorProviders} from './Authentication/index';
 //PrimeNg Modules
 import {TabViewModule} from 'primeng/tabview';
 import {TabMenuModule} from 'primeng/tabmenu';
@@ -87,7 +87,7 @@ import { HeaderComponent } from './layout/header/header.component';
     
     RouterModule.forRoot([])
   ],
-  providers: [ApiService,FacultyService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},
+  providers: [httpInterceptorProviders,ApiService,FacultyService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},
   bootstrap: [AppComponent]
 })
 export class AppModule { }
