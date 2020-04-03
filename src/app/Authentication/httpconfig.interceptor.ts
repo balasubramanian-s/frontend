@@ -9,12 +9,12 @@ export class HttpConfigInterceptor  implements HttpInterceptor {
     intercept(req: HttpRequest<any>,
               next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const idToken = sessionStorage.getItem("token");
-        let authHeader='Bearer ' + idToken;
+        const idToken =JSON.parse(sessionStorage.getItem("token")) ;
+       let authHeader:String="Bearer ";
 
         if (idToken) {
             
-            req = req.clone({setHeaders: { 'Authorization': authHeader }  });
+            req = req.clone({setHeaders: { 'Authorization':authHeader+idToken }  });
             req = req.clone({ headers: req.headers.set('Access-Control-Allow-Origin', '*') });
              req = req.clone({ headers: req.headers.set('Content-Type', 'application/json')});
             console.log(req)
@@ -30,7 +30,7 @@ export class HttpConfigInterceptor  implements HttpInterceptor {
             return next.handle(req).pipe(
                 map((event: HttpEvent<any>) => {
                     if (event instanceof HttpResponse) {
-                        console.log('event--->>>', event);
+                      //  console.log('event--->>>', event.body.description);
                     }
                     return event;
                 }),catchError((error: HttpErrorResponse) => {

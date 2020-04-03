@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import * as moment from "moment";
+import { error } from '@angular/compiler/src/util';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,7 @@ url="http://localhost:8080/authenticate"
   constructor(private _httpClient:HttpClient) { }
 
 getjwt(username,password):Observable<Jwt>{
-return  this._httpClient.post<Jwt>(this.url,{username,password}).pipe(map(res=>res));
+return  this._httpClient.post<Jwt>(this.url,{username,password}).pipe(map((res:any)=>res.jwt));
 }
  
 authenticate(username, password) {
@@ -30,7 +31,7 @@ this.getjwt(username,password).subscribe((data:any)=>this.token=data.jwt);
   }
   
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')      
+    let user = sessionStorage.getItem('token')      
     return !(user === null)
   }
 

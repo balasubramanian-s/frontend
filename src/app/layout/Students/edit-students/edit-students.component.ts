@@ -28,7 +28,8 @@ years:SelectItem[]
 this.stud_id=parseInt(this._activatedRoute.snapshot.paramMap.get('id'));
 this.inst_id=parseInt(this._activatedRoute.snapshot.paramMap.get('instid'));
 this._studentsService.getStudent(this.stud_id).subscribe(data=>{this.student=data,this.loadValues(),this.flag=true});
-this.orgService.getAllOrg().subscribe(data=>this.orgObj=data);
+this.orgService.getAllOrg().subscribe((res:any)=>{this.orgObj=res.data});
+
 this.years=[];
 this.years.push({label:'Select Year',value:''});
   this.years.push({label:'First Year',value:'1'});
@@ -69,8 +70,8 @@ loadValues(){
 update(){
   
   this.saveObj=this.editform.value;
-  
-  this._studentsService.addStudent(this.saveObj).subscribe(data=>{
+  console.log(this.saveObj);
+  this._studentsService.updateStudent(this.saveObj).subscribe(data=>{alert(data);
     this.stud_id==null?this._router.navigate(['/students',this.inst_id,this.student.org.name]):this._router.navigate(['/allstudents'])})
 }
 }

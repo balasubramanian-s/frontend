@@ -3,6 +3,7 @@ import{HttpClient,HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import{organization} from 'src/app/model/organization';
 import {Observable,throwError} from 'rxjs';
 import{map, catchError} from 'rxjs/operators'
+import axios from 'axios';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,19 +23,16 @@ export class ApiService {
   
     //api call to list all organization ,return type :List of objects
 
-    getAllOrg():Observable<any>{
-    // this.Token = sessionStorage.getItem("token");
-     //const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET'};
-      return this._httpClient.get<any>(this.org_url).pipe(map((res:any)=>res.data),catchError(this.handleError));
+    getAllOrg(){
+         return this._httpClient.get<any>(this.org_url).pipe(map((res:any)=>res),catchError(this.handleError));
     }
 
 
     //api call to get organization by id, input : Integer id,return type:org object
 
     getOrg(id:Number):Observable<any>{
-      this.Token = sessionStorage.getItem("token");
-     const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET'};
-      return this._httpClient.get<any>(`${this.org_url}/${id}`,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+      let id1= id.toString();
+      return this._httpClient.get<any>(`${this.org_url}/${id1}`).pipe(map((res:any)=>res.data),catchError(this.handleError));
        
           }
 
@@ -43,9 +41,8 @@ export class ApiService {
 
    addOrg(_org:Object):Observable<organization>
    {
-    this.Token = sessionStorage.getItem("token");
-    const headers ={'Authorization': 'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.post<organization>(this.org_url,_org,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+   
+    return this._httpClient.post<organization>(this.org_url,_org).pipe(map((res:any)=>res.data),catchError(this.handleError));
    }
 
 
@@ -54,26 +51,22 @@ export class ApiService {
 
   editOrg(_org:Object):Observable<organization>
    {
-    this.Token = sessionStorage.getItem("token");
-    const headers ={'Authorization': 'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-     return this._httpClient.put<organization>(this.org_url,_org,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+ //   this.Token = sessionStorage.getItem("token");
+   // const headers ={'Authorization': 'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
+     return this._httpClient.put<organization>(this.org_url,_org).pipe(map((res:any)=>res.data),catchError(this.handleError));
    }
 
 
    //api call to delete organization ,Input :org Id
 
    deleteOrg(id:Number):Observable<any>{
-    this.Token = sessionStorage.getItem("token");
-    const headers ={'Authorization': 'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.delete(`${this.org_url}/${id}`,{headers:headers}).pipe(map((res:any)=>res.description),catchError(this.handleError));
+    return this._httpClient.delete(`${this.org_url}/${id}`).pipe(map((res:any)=>res.description),catchError(this.handleError));
    }
 
  //api call to change status,Input :Organization Id
 
    statusOrg(id:Number){
-    this.Token = sessionStorage.getItem("token");
-    const headers ={'Authorization': 'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-     return this._httpClient.put(`${this.org_url}/status/${id}`,{headers:headers}).pipe(map((res:any)=>res.description),catchError(this.handleError));
+     return this._httpClient.put(`${this.org_url}/status/${id}`,id).pipe(map((res:any)=>res.description),catchError(this.handleError));
    }
 
    private handleError(error: HttpErrorResponse) {

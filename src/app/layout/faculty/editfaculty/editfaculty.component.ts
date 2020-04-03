@@ -33,7 +33,7 @@ error;
     this.org_name=this.activatedRoute.snapshot.paramMap.get('name');
     this.facultyService.getFaculty(this.id).subscribe(data=>{this.Obj=data,this.Obj==null?this.flag=false:this.flag=true,this.load();});
     this.facultyService.getRoles().subscribe((data: any) => { this.roles = data });
-    this.orgService.getAllOrg().subscribe((data:any)=>{this.orgObj=data});
+    this.orgService.getAllOrg().subscribe((res:any)=>{this.orgObj=res.data});
    
 
   }

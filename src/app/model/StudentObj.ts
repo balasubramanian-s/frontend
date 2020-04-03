@@ -1,4 +1,5 @@
 import { organization } from './organization'
+import { Timestamp } from 'rxjs/internal/operators/timestamp'
 
 export class StudentObj{
     id: Number
@@ -10,4 +11,7 @@ export class StudentObj{
     email: String
     mobileno: Number
     year: Number
+    createdon:any
+    modifiedon:any
+
 }

@@ -24,7 +24,7 @@ export class OrganizationComponent implements OnInit {
 
   }
   reload() {
-    this._apiService.getAllOrg().subscribe(data => { this.org = data; _.isEmpty(this.org) ? this.flag = false : this.flag = true });
+    this._apiService.getAllOrg().subscribe(res => { this.org = res.data; _.isEmpty(this.org) ? this.flag = false : this.flag = true });
   }
 
   ngOnInit(): void {

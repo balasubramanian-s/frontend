@@ -87,7 +87,7 @@ import { HeaderComponent } from './layout/header/header.component';
     
     RouterModule.forRoot([])
   ],
-  providers: [httpInterceptorProviders,ApiService,FacultyService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},
+  providers: [httpInterceptorProviders,ApiService,FacultyService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},httpInterceptorProviders
   bootstrap: [AppComponent]
 })
 export class AppModule { }

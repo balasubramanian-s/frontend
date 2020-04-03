@@ -2,8 +2,10 @@
 
 <div class="main">
     <h1 class="p-3 mb-2 bg-dark text-white">Students Details</h1>
-    <table class="table table-stripped" style="text-align: center;border:2">
-        <tr>
+    <table border=2 class="table table-stripped" style="width: 50%;" > <!--style="text-align: center;border:2;width: 50%;border:2ch;"-->
+      <tbody class="align-middle">
+
+       <tr>
         <th>Name</th>
         <td>{{student?.fname}}&nbsp;{{ student?.lname}}</td></tr>
         <tr>
@@ -16,8 +18,8 @@
         <tr><th>Year</th><td>{{student?.year}}</td></tr>
         <tr><th>Mobile</th><td>{{student?.mobileno}}</td></tr>
         <tr><th>Email</th><td>{{student?.email}}</td></tr>
-      <!--  <tr><th>Created On</th><td>{{student.createdon}}</td></tr>
-         <tr><th>Modified On</th><td>{{student?.modifiedon}}</td></tr>  -->
-       
+      <tr><th>Created On</th><td>{{student?.createdon| date:'medium'}}</td></tr>
+           <tr><th>Modified On</th><td>{{student?.modifiedon| date:'medium'}}</td></tr>  
+        </tbody>
     </table>
 </div>

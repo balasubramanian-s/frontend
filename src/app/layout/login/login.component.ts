@@ -11,39 +11,30 @@ export class LoginComponent implements OnInit {
 
   username = 'admin';
   password = 'pass';
-  invalidLogin = false;
-  token=sessionStorage.getItem('token');
+  flag = false;
+  
   constructor(private _auth:AuthenticationService,
               private route:Router) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 validate(){
 //this._auth.login(this.username,this.password);
-  //this._auth.getjwt(this.username,this.password).subscribe(data=>{this.token=data;console.log(data)});
+  this._auth.getjwt(this.username,this.password).subscribe(data=>                                                       
+                                                      {
+                                                        const token=data;
+                                                       sessionStorage.setItem('token', JSON.stringify(token));
+                                                      this.flag=true;this.route.navigate(['home']);alert('Login Successful');
+                                                      });
 
-  if(this._auth.authenticate(this.username,this.password)){
-    alert('Login Successful');
-    this.route.navigate(['home']);
+  if(this.flag){ 
     
-    this.invalidLogin = false;
-
-  }else{
-    this.invalidLogin=true;
     alert("Invalid Password")
-
+      
 
   }
- /* if(this._auth.authenticate(this.username,this.password)){
-    this.route.navigate(['home']);
-    this.invalidLogin = false;
-
-  }
-  else{
-    this.invalidLogin=true;
-    alert("Invalid Password")
-
-  }*/
+ 
 }
 
  

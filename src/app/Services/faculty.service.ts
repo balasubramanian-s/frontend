@@ -32,66 +32,53 @@ export class FacultyService {
   Token:String;
 
   getAllFactulty() {
-     this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.get(this.base_url,{headers:headers}).pipe(map((res: any) => res.data),catchError(this.handleError));
+    // this.Token = sessionStorage.getItem("token");
+     // const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
+    return this._httpClient.get(this.base_url).pipe(map((res: any) => res.data),catchError(this.handleError));
   }
 
   getFaculty(id: Number) {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.get(`${this.base_url}${id}`,{headers:headers}).pipe(map((res: any) => res.data),catchError(this.handleError));
+    return this._httpClient.get(`${this.base_url}${id}`).pipe(map((res: any) => res.data),catchError(this.handleError));
 
   }
   getFacultyByInstitution(id: Number): Observable<FacultyObj[]> {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.get<FacultyObj[]>(`${this.base_url}institution/${id}`,{headers:headers}).pipe(map((res:any)=>res.data),catchError(this.handleError));
+    
+    return this._httpClient.get<FacultyObj[]>(`${this.base_url}institution/${id}`).pipe(map((res:any)=>res.data),catchError(this.handleError));
   }
 
 
 
 
   deleteFaculty(id: Number): Observable<any> {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.delete(`${this.base_url}${id}`,{headers:headers}).pipe(map((res:any)=>res.description),catchError(this.handleError));
+    
+    return this._httpClient.delete(`${this.base_url}${id}`).pipe(map((res:any)=>res.description),catchError(this.handleError));
 
   }
   addFaculty(fac: Faculty): Observable<Faculty> {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.post<Faculty>(this.base_url, fac,{headers:headers}).pipe(map((res:any)=>res.description),catchError(this.handleError));
+    
+    return this._httpClient.post<Faculty>(this.base_url, fac).pipe(map((res:any)=>res.description),catchError(this.handleError));
   }
   editFaculty(fac: Faculty): Observable<Faculty> {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.put<Faculty>(this.base_url, fac,{headers:headers}).pipe(map((res:any)=>res.description),catchError(this.handleError));
+  
+    return this._httpClient.put<Faculty>(this.base_url, fac).pipe(map((res:any)=>res.description),catchError(this.handleError));
   }
 
 
 
   //htpp calls for Roles Api
   getRoles(): Observable<Roles> {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.get<Roles[]>(this.roles_url,{headers:headers}).pipe(map((res: any) => this.roles = res),catchError(this.handleError));
+      return this._httpClient.get<Roles[]>(this.roles_url).pipe(map((res: any) => this.roles = res),catchError(this.handleError));
 
   }
   getRolesByid(id: number) {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.get<Roles>(`${this.roles_url}${id}`,{headers:headers}).pipe(map((res: any) => res),catchError(this.handleError));
+    
+    return this._httpClient.get<Roles>(`${this.roles_url}${id}`).pipe(map((res: any) => res),catchError(this.handleError));
   }
   addRole(role: Roles) {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.post<Roles>(this.roles_url, role,{headers:headers}).pipe(map((res: any) => res),catchError(this.handleError));
+    return this._httpClient.post<Roles>(this.roles_url, role).pipe(map((res: any) => res),catchError(this.handleError));
   }
   deleteRole(id: Number) {
-    this.Token = sessionStorage.getItem("token");
-      const headers ={'Authorization':'Bearer '+this.Token,'Access-Control-Allow-Origin': '*'};
-    return this._httpClient.delete(`${this.roles_url}${id}`,{headers:headers}).pipe(map((res:any) => res.description),catchError(this.handleError));
+    return this._httpClient.delete(`${this.roles_url}${id}`).pipe(map((res:any) => res.description),catchError(this.handleError));
   }
 
 
