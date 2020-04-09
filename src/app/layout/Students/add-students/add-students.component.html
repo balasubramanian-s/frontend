@@ -1,12 +1,14 @@
 <app-header></app-header> 
 
 <h1 class="p-2 mb-2 bg-dark text-white">Add Student Details</h1>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" style="width: 50%;padding-left: 15%;">
     <p-panel header="Student Details" styleClass>
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    First Name *:
+                    First Name 
                 </div>
                 <div class="ui-grid-col-6">
                     <input pInputText type="text" formControlName="fname" placeholder="Required" />
@@ -19,7 +21,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Last Name *:
+                    Last Name 
                 </div>
                 <div class="ui-grid-col-6">
                     <input pInputText type="text" formControlName="lname" placeholder="Required" />
@@ -32,7 +34,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Registration Number *:
+                    Registration Number 
                 </div>
                 <div class="ui-grid-col-6">
                     <input pInputText type="tel" formControlName="redgno" />
@@ -44,7 +46,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Date Of Birth *:
+                    Date Of Birth 
                 </div>
                 <div class="ui-grid-col-6">
                     <input type="date" formControlName="dob"/>
@@ -53,7 +55,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Email *:
+                    Email 
                 </div>
                 <div class="ui-grid-col-6">
                     <input pInputText type="text" formControlName="email" placeholder="Required" />
@@ -62,7 +64,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Mobile No *:
+                    Mobile No 
                 </div>
                 <div class="ui-grid-col-6">
                     <input pInputText type="text" formControlName="mobileno" placeholder="Required" />
@@ -71,7 +73,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Year *:
+                    Year 
                 </div>
                 <div class="ui-grid-col-6">
                     <p-dropdown [options]="years" formControlName="year"></p-dropdown>

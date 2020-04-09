@@ -32,14 +32,15 @@ export class HttpConfigInterceptor  implements HttpInterceptor {
                     if (event instanceof HttpResponse) {
                       //  console.log('event--->>>', event.body.description);
                     }
+                   
                     return event;
                 }),catchError((error: HttpErrorResponse) => {
                     let data = {};
                     data = {
-                        reason: error && error.error.reason ? error.error.reason : '',
+                        reason: error.error.errors,
                         status: error.status
                     };
-                    console.log(data);
+                    
                     return throwError(error);
                 }));
         

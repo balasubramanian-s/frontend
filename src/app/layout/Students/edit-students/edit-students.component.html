@@ -1,14 +1,18 @@
 <app-header></app-header> 
 <div class="main">
+   <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+   
+<div id="edit" style="padding:10px;position: absolute;" class="border border-dark rounded-lg">
+   <h1 class="p-3 mb-2 bg-info  " >Edit Student Details</h1><br>
 
 <form [formGroup]="editform" *ngIf="flag" (ngSubmit)="update()">
-
-    <label>FirstName</label>&nbsp;<input type="text" formControlName="fname" > <br><br>
-    <label>LastName</label>&nbsp;<input type="text" formControlName="lname" /><br><br>
-    <label>DateOfBirth</label>&nbsp;<input type="date" formControlName="dob" /><br><br>
-    <label>Registration No</label>&nbsp;<input type="text" formControlName="redgno"><br><br>
-    <label>Email</label>&nbsp;<input type="email" formControlName="email" /><br><br>
-    <label>MobileNo</label>&nbsp;<input type="tel" formControlName="mobileno" /><br><br>
+      
+    <label>FirstName</label>&nbsp;<input type="text" formControlName="fname" aria-label="fname" placeholder="FirstName" aria-describedby="basic-addon1" class="form-control" > <br>
+    <label>LastName</label>&nbsp;<input type="text" formControlName="lname" aria-label="lname" placeholder="LastName" aria-describedby="basic-addon1" class="form-control" /><br>
+    <label>DateOfBirth</label>&nbsp;<input type="date" formControlName="dob" aria-label="dob" placeholder="Date Of Birth" aria-describedby="basic-addon1" class="form-control" /><br>
+    <label>Registration No</label>&nbsp;<input type="text" formControlName="redgno"aria-label="redgno" placeholder="Registration No" aria-describedby="basic-addon1" class="form-control" ><br>
+    <label>Email</label>&nbsp;<input type="email" formControlName="email" aria-label="email" placeholder="Email" aria-describedby="basic-addon1" class="form-control"  /><br>
+    <label>MobileNo</label>&nbsp;<input type="tel" formControlName="mobileno" aria-label="mobileno" placeholder="MobileNo" aria-describedby="basic-addon1" class="form-control" /><br>
     
 
 
@@ -29,5 +33,5 @@
     <!-- [routerLink]="['/faculty',this.id,this.name]" -->
 
  </form>
-    
+</div>
 </div>

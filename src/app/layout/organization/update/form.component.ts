@@ -3,6 +3,7 @@ import{FormGroup,FormControl} from '@angular/forms';
 import { organization } from 'src/app/model/organization';
 import{ApiService} from '../../../Services/api.service';
 import{Router,ActivatedRoute,ParamMap} from '@angular/router';
+import {MessageService} from 'primeng/api';
 
 
 
@@ -10,7 +11,7 @@ import{Router,ActivatedRoute,ParamMap} from '@angular/router';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-  providers:[ApiService]
+  providers:[ApiService,MessageService]
 })
 export class FormComponent implements OnInit {
    org:organization;
@@ -20,7 +21,7 @@ export class FormComponent implements OnInit {
   
   constructor(  private _activatedroute: ActivatedRoute,
                private _router: Router,
-               private _api:ApiService
+               private _api:ApiService,private messageService:MessageService
                ) { 
                 
                   this.getdetails();
@@ -29,7 +30,15 @@ export class FormComponent implements OnInit {
   }
   getdetails(){
                  this.id=parseInt(this._activatedroute.snapshot.paramMap.get('id'));
-                this._api.getOrg(this.id).subscribe(data=>{this.org=data;this.load(); });   
+                this._api.getOrg(this.id).subscribe(res=>{ if(res.status==200){
+                                                            this.org=res.body.data;this.load();
+                                                         }},
+                                                         err=>{
+                                                           if(err.status==404){
+                                                            this.messageService.clear();
+                                                            this.messageService.add({ severity:'error', summary: "Something Went Wrong" });
+                                                           }
+                                                         });   
 
   }
 
@@ -66,8 +75,30 @@ export class FormComponent implements OnInit {
     
     this.org=this.editForm.value;
     this.org.id=this.id;        
-    this._api.editOrg(this.org).subscribe();
-    this._router.navigateByUrl('home');
+    this._api.editOrg(this.org).subscribe((res:any)=>{if(res.status==200){
+                                                             this.messageService.clear();
+                                                              this.messageService.add({ severity:'sucess', summary:"Data Updated"});
+                                                              this._router.navigateByUrl('home');       
+                                                          }
+
+                                                    },
+                                                    err=>{
+                                                      if(err.status==400){
+                                                        this.messageService.clear();
+                                                        this.messageService.add({ severity:'error', summary:"Something Went Wrong",detail:"One or more Field is Missing"});
+
+                                                      }else if(err.status==404){
+                                                        this.messageService.clear();
+                                                        this.messageService.add({ severity:'error', summary:"Something Went Wrong"});
+
+                                                      }else{
+                                                        this.messageService.clear();
+                                                        this.messageService.add({ severity:'error', summary:"Something Went Wrong"});
+
+                                                      }
+
+                                                    });
+   
 
 
   }

@@ -3,19 +3,21 @@ import { StudentsService } from '../../../Services/students.service';
 import { StudentObj } from 'src/app/model/StudentObj';
 import * as _ from 'lodash';
 import { SelectItem } from 'primeng/api/selectitem';
+import{MessageService} from 'primeng/api';
+
 @Component({
   selector: 'app-all-students',
   templateUrl: './all-students.component.html',
   styleUrls: ['./all-students.component.css'],
-  providers:[StudentsService]
+  providers:[StudentsService,MessageService]
 })
 export class AllStudentsComponent implements OnInit {
 flag=false;
 ask;
 years:SelectItem[];
-  students:StudentObj[];
+  students;
   selectedyear;
-  constructor(private _studentService:StudentsService) { }
+  constructor(private _studentService:StudentsService,private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.years=[]   
@@ -27,19 +29,42 @@ years:SelectItem[];
     this.load();
   }
 load(){
-this._studentService.getAllStudents().subscribe(data=>{this.students=data,_.isEmpty(this.students)?this.flag=false:this.flag=true});
+this._studentService.getAllStudents().subscribe(res=>{this.students=res,_.isEmpty(this.students)?this.flag=false:this.flag=true},
+                                                err=>{
+                                                  this.messageService.clear();
+                                                  this.messageService.add({ severity:'error', summary: err.status,detail:"Something Went Wrong"});
+                                                } );
 }
 reload(){
-  this._studentService.getStudentByYear(this.selectedyear).subscribe(data=>{this.students=data,_.isEmpty(this.students)?this.flag=false:this.flag=true});
+  this._studentService.getStudentByYear(this.selectedyear).subscribe(res=>{this.students=res.body.data,_.isEmpty(this.students)?this.flag=false:this.flag=true},
+                                                                      err=>{
+                                                                      this.messageService.clear();
+                                                                      this.messageService.add({ severity:'error', summary: err.status,detail:"Something Went Wrong"});} );
 }
 delete(id: number) {
-  this.ask = confirm("Are You Sure?");
-  if (this.ask) {
-    this._studentService.deleteStudent(id).subscribe(data => { this.load(), console.log(data) });
-
-  }
+  this.messageService.clear();
+    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
+   
 
  
+}
+onConfirm(id:number) {
+  this._studentService.deleteStudent(id).subscribe(
+    res => {if(res.status==200){    
+      this.load();
+      this.messageService.clear();
+      this.messageService.add({ severity:'success', summary: res.body.description});} },
+      err=>{
+        this.messageService.clear();
+      this.messageService.add({ severity:'error', summary: err.status,detail:"Something Went Wrong"});
+      });
+}
+onReject() {
+  this.messageService.clear('c');
+}
+
+clear() {
+  this.messageService.clear();
 }
 year(id:number){
   this.selectedyear=id;

@@ -1,5 +1,7 @@
 <app-header></app-header> 
 <div class="main">
+    <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
     <h1 class="p-3 mb-2 bg-dark text-white"> {{inst_name}} Students </h1>
 
 
@@ -18,11 +20,10 @@
                <th>FirstName</th>
                <th>LastName</th>
                <th>Year</th>
-               <th>DateOfBirth</th>
+               
                <th>Email</th>
                <th>Mobile</th>
-               <th>CreatedOn</th>
-               <th>ModifiedOn</th>
+              
                <th>Action</th>
             </tr>
         </thead>
@@ -35,14 +36,29 @@
                 <td><a [routerLink]="['/studentDetails',student.id]">{{student.fname}}</a></td>
                 <td>{{student.lname}}</td>
                 <td>{{student.year}}</td>
-                <td>{{student.dob}}</td>
+                
                 <td>{{student.email}}</td>
                 <td>{{student.mobileno}}</td>
-                <td>{{student.createdon |date:'medium'}}</td>
-                <td>{{student.modifiedon |date:'medium'}}</td>
+                
                 <td><i [routerLink]="['/editStudent',student.id,student.org.id]" class="pi pi-user-edit" style="font-size: 2em"></i> 
                     &nbsp;&nbsp;<i  (click)="delete(student.id)" class="pi pi-trash" style="font-size: 2em"></i></td>
-
+                    <p-toast position="center" key="c" (onClose)="onReject()"  [baseZIndex]="5000">
+                        <ng-template let-message pTemplate="message">
+                            <div style="text-align: center">
+                                <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+                                <h3>{{message.summary}}</h3>
+                                <p>{{message.detail}}</p>
+                            </div>
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-6">
+                                    <button type="button" pButton (click)="onConfirm(student.id)" label="Yes" class="ui-button-success"></button>
+                                </div>
+                                <div class="ui-g-6">
+                                    <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-toast>
             </tr>
         </tbody>
 

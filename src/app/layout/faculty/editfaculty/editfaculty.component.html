@@ -1,6 +1,8 @@
   <app-header></app-header>  
   <div class="main">
 <h1 class="p-2 mb-2 bg-dark text-white">Edit Faculty Details</h1>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
 <p-tabView>
    <p-tabPanel header="Personal Details">
      
@@ -39,7 +41,7 @@
       <option value="" disabled></option>
       <option *ngFor="let role of roles;" [value]="role.id">{{this.role.name}}</option>
    </select><br><br>
-      <button type="submit" class="btn btn-dark">Save</button>
+      <button type="submit" class="btn btn-dark">Update</button>
    </form>
    </p-tabPanel>
 </p-tabView>

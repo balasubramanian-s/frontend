@@ -7,16 +7,17 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Student } from 'src/app/model/Student';
 import { StudentObj } from 'src/app/model/StudentObj';
 import { SelectItem } from 'primeng/api/selectitem';
-
+import{MessageService } from 'primeng/api';
 @Component({
   selector: 'app-edit-students',
   templateUrl: './edit-students.component.html',
   styleUrls: ['./edit-students.component.css'],
-  providers:[StudentsService,ApiService]
+  providers:[StudentsService,ApiService,MessageService]
 })
 export class EditStudentsComponent implements OnInit {
 
-  constructor(private _studentsService:StudentsService,private _activatedRoute:ActivatedRoute,private _router:Router ,private orgService:ApiService) { }
+  constructor(private _studentsService:StudentsService,private _activatedRoute:ActivatedRoute,
+              private _router:Router ,private orgService:ApiService,private messageService:MessageService) { }
 stud_id:number;
 inst_id:number;
 student:StudentObj;
@@ -27,8 +28,11 @@ years:SelectItem[]
   ngOnInit(): void {
 this.stud_id=parseInt(this._activatedRoute.snapshot.paramMap.get('id'));
 this.inst_id=parseInt(this._activatedRoute.snapshot.paramMap.get('instid'));
-this._studentsService.getStudent(this.stud_id).subscribe(data=>{this.student=data,this.loadValues(),this.flag=true});
-this.orgService.getAllOrg().subscribe((res:any)=>{this.orgObj=res.data});
+this._studentsService.getStudent(this.stud_id).subscribe(res=>{this.student=res.body.data,this.loadValues(),this.flag=true},
+                                                            err=>{this.messageService.clear();
+                                                              this.messageService.add({ severity:'error', summary:"Something went wrong" });});
+this.orgService.getAllOrg().subscribe((res:any)=>{this.orgObj=res.body.data},err=>{this.messageService.clear();
+                                                    this.messageService.add({ severity:'error', summary:"Something went wrong" });});
 
 this.years=[];
 this.years.push({label:'Select Year',value:''});
@@ -71,7 +75,15 @@ update(){
   
   this.saveObj=this.editform.value;
   console.log(this.saveObj);
-  this._studentsService.updateStudent(this.saveObj).subscribe(data=>{alert(data);
-    this.stud_id==null?this._router.navigate(['/students',this.inst_id,this.student.org.name]):this._router.navigate(['/allstudents'])})
+  this._studentsService.updateStudent(this.saveObj).subscribe(res=>{if(res.status==200){
+    this.stud_id==null?this._router.navigate(['/students',this.inst_id,this.student.org.name]):this._router.navigate(['/allstudents'])}},
+    err=>{
+      if(err.status==404){  this.messageService.clear();
+        this.messageService.add({ severity:'error', summary:"Something went wrong" });}
+   
+      if(err.status==400){
+        this.messageService.clear();
+        this.messageService.add({ severity:'error', summary:"Update Failed " ,detail: 'One or more Column is Missing'});}
+    });
 }
 }

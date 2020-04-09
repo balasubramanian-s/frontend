@@ -1,24 +1,26 @@
 <app-header></app-header> 
 
-<h1 class="p-2  bg-dark text-white">Add Organization</h1>
+<h1 class="p-2  bg-secondary text-white">Add Organization</h1>
 
+<div id="add">
+<div id="form" style="padding: 3%;position:absolute;" class="border border-dark rounded-lg">
+  <h2 class="p-2 mb-2  text-dark">Enter Organization details</h2>
 
-<div id="form" style="padding: 3%;position:absolute;" class="border border-primary rounded">
-  <h1 class="p-2 mb-2 bg-dark text-white">Enter Organization details</h1>
-
-
+  <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
 <form [formGroup]="addForm" (ngSubmit)="save()" class="form-group">
   
-    <label><h3>Name</h3></label> <input type="text" formControlName="name" />
-    <label><h3>Alias</h3></label><input type="text" formControlName="alias"/><br>
-    <label><h3>University</h3></label><input type="text" formControlName="university" /><br>
-   
-<button type="submit" class="btn btn-dark text-white">Save</button>
+    <input type="text" class="form-control" aria-label="Name" formControlName="name" aria-describedby="basic-addon1" placeholder="Organization Name" /><br>
+    <input type="text" class="form-control" aria-label="Alias" formControlName="alias" aria-describedby="basic-addon1" placeholder="Alias Name"  /><br>
+    <input type="text" class="form-control" aria-label="University" formControlName="university" aria-describedby="basic-addon1" placeholder="University"  /><br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="submit"  class="btn btn-dark text-white">Save</button> &nbsp;&nbsp;&nbsp;&nbsp;
+<button type="reset" class="btn btn-dark text-white">Reset</button>
 
 
 
 
 </form>
+</div>
 </div>
 
 <router-outlet></router-outlet>

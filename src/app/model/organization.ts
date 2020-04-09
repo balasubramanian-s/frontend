@@ -7,6 +7,8 @@ export class organization{
   university:string;
    createdon:any;
    modifiedon:any;
+   createdby:string;
+   modifiedby:string;
   isActive:Boolean;
  logo:File;
 }

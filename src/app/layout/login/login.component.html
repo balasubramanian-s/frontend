@@ -1,19 +1,24 @@
 <app-header></app-header>
-<div id="login">
-<div style="padding: 5%;position:absolute;" class="border border-dark rounded" >
-  <h1 class="p-3 mb-2 bg-dark text-white">Login Page</h1>
-    <div class="form-group" >
-      
-     <label> <h2>Username</h2></label>  &nbsp;
-      <input type="text" name="username" [(ngModel)]="username" ><br><br> 
-     <label><h2>Password</h2></label>   &nbsp;
-     <input type="password" name="password" [(ngModel)]="password" class="form-control" ><br>
-    <br><br>
-    <button (click)=validate() class="btn btn-dark">
-      Login
-    </button>
-    
-  </div> </div>
+
+
+
+<div id="login" >
+  
+<div style="padding: 5%;position:absolute;" class="border border-dark rounded-lg">
+  <h1 class="p-3 mb-2 bg-transparent  " >Login Page</h1><br>
+  <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
+<form [formGroup]="loginform" (ngSubmit)="validate()"> 
+    <input type="text" class="form-control" aria-label="Username" placeholder="Username" aria-describedby="basic-addon1" formControlName="username">
+  <br>
+  
+  <input type="password"  class="form-control" aria-label="Password" formControlName="password"  aria-describedby="basic-addon1" placeholder="Password"><br>
+<button type="submit" class="btn btn-dark"  >Login</button>
+</form>
+</div>
+
+
+
   
 </div>
 

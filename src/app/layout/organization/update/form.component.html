@@ -1,12 +1,14 @@
 <app-header></app-header> 
+<h1 class="p-2  bg-secondary text-white">Edit Organization Details</h1>
+<div id="add">
+<div id="form" style="padding: 3%;width:30%;" class="border border-dark rounded">
+    <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
 
-
-<div id="form" style="padding: 3%;position:absolute;" class="border border-primary rounded">
-    <h1 class="p-2  bg-dark text-white">Edit Organization Details</h1>
+    
 <form [formGroup]="editForm" (ngSubmit)="update()">
-    <label>Name</label>&nbsp; <input type="text" formControlName="name" ><br>
-    <label>Alias Name</label>&nbsp;<input type="text" formControlName="alias"  /><br>
-    <label>University</label>&nbsp;<br><br><input type="text" formControlName="university"/><br>  
+    <h2>Name</h2><input type="text" formControlName="name" class="form-control" aria-label="Name" aria-describedby="basic-addon1" placeholder="Organization Name"><br>
+    <label><h2>Alias Name</h2></label><input type="text" formControlName="alias" class="form-control" aria-label="Alias" aria-describedby="basic-addon1" placeholder="Alias Name"  /><br>
+    <label><h2>University</h2></label><input type="text" formControlName="university" class="form-control" aria-label="University" aria-describedby="basic-addon1" placeholder="University" /><br>  
   
 <button type="submit" class="btn btn-dark">Update</button>&nbsp;&nbsp;
 <button type="button" (click)="load()" class="btn btn-warning">Reset</button>
@@ -14,5 +16,5 @@
 
 
 </form>
-</div>
+</div></div>
 <router-outlet></router-outlet>

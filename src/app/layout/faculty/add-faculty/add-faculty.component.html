@@ -2,7 +2,9 @@
 
 <div class="main">
 <h1 class="p-2 mb-2 bg-dark text-white">Add Faculty Details</h1>
-<p-tabView>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
+<p-tabView class="bg-transparent">
    <p-tabPanel header="Personal Details">
 <form [formGroup]="facultyform">
 
@@ -15,11 +17,11 @@
 </form>
 </p-tabPanel>
 
-<p-tabPanel header="Organization" id="o">
-   <form [formGroup]="facultyform" (ngSubmit)="save()"> 
+<p-tabPanel header="Organization" id="o" >
+   <form [formGroup]="facultyform" (ngSubmit)="save()" > 
 
       <label>Organization </label>&nbsp;&nbsp;<select (change)="organization($event.target.value)"
-      class="btn btn-dark dropdown-toggle border border-dark text-white" formControlName="institution_id">
+      class="btn btn-info dropdown-toggle border border-dark text-white" formControlName="institution_id">
       <option value="" disabled selected>Select</option>
       <option *ngFor="let org of orgObj;" [value]="org.id">{{this.org.name}}</option>
    </select><br><br>
@@ -27,7 +29,7 @@
 
 
 
-<label>Role </label>&nbsp;&nbsp;<select (change)="role($event.target.value)" class="btn btn-dark dropdown-toggle border border-dark text-white">
+<label>Role </label>&nbsp;&nbsp;<select (change)="role($event.target.value)" class="btn btn-info dropdown-toggle border border-dark text-white">
          <option value="" disabled selected>Select</option>
             <option *ngFor="let role of roles;" [value]="role.id">{{this.role.name}}</option>
            </select><br><br>

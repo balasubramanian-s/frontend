@@ -3,7 +3,7 @@ import { StudentsService } from '../../../Services/students.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { StudentObj } from 'src/app/model/StudentObj';
 import { EventEmitter } from '@angular/core';
-
+import {MessageService} from 'primeng/api'
 import * as _ from 'lodash';
 import { SelectItem } from 'primeng/api/selectitem';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ResourceLoader } from '@angular/compiler';
   selector: 'app-org-students',
   templateUrl: './org-students.component.html',
   styleUrls: ['./org-students.component.css'],
-  providers: [StudentsService]
+  providers: [StudentsService,MessageService]
 })
 export class OrgStudentsComponent implements OnInit {
   inst_id;
@@ -23,7 +23,9 @@ export class OrgStudentsComponent implements OnInit {
   yearForm:FormGroup;
   years:SelectItem[];
   selectedyear;
-  constructor(private fb: FormBuilder,private _studentsService: StudentsService, private _activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder,private _studentsService: StudentsService,
+             private _activatedRoute: ActivatedRoute, private router: Router,
+             private messageService:MessageService) {
     
 
    }
@@ -43,21 +45,38 @@ export class OrgStudentsComponent implements OnInit {
   }
 
   load() {    
-      this._studentsService.getStudentByInstitution(this.inst_id).subscribe(data => { this.students = data;_.isEmpty(this.students)?this.flag=false:this.flag=true});
+      this._studentsService.getStudentByInstitution(this.inst_id).subscribe(res => {if(res.status==200){ this.students = res.body.data;_.isEmpty(this.students)?this.flag=false:this.flag=true}
+                                                                                  },err=>{if(err.status==404){this.messageService.clear();
+                                                                                    this.messageService.add({ severity:'error', summary:"No Students " });}});
      
   }
   reload(){
-    this._studentsService.getStudentByInstYear(this.inst_id,this.selectedyear).subscribe(data=>{this.students=data;_.isEmpty(this.students)?this.flag=false:this.flag=true});
+    this._studentsService.getStudentByInstYear(this.inst_id,this.selectedyear).subscribe(res=>{if(res.status==200){this.students=res.body.data;_.isEmpty(this.students)?this.flag=false:this.flag=true}},
+                                                                                          err=>{if(err.status==404){this.flag=false; this.messageService.clear();
+                                                                                            this.messageService.add({ severity:'error', summary:"No Students " });}});
   }
   delete(id: number) {
-    this.ask = confirm("Are You Sure?");
-    if (this.ask) {
-      this._studentsService.deleteStudent(id).subscribe(data => { this.load(), console.log(data) });
-
-    }
-
+    this.messageService.clear();
+    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
+   
    
   }
+  onConfirm(id:number) {
+    this._studentsService.deleteStudent(id).subscribe(
+      res => {
+        this.reload();
+        this.messageService.clear();
+        this.messageService.add({ severity:'success', summary: res.body.description}); },
+        err=>console.error(err.status));
+  }
+  onReject() {
+    this.messageService.clear('c');
+  }
+  
+  clear() {
+    this.messageService.clear();
+  }
+
   year(id:number){
   this.selectedyear=id;
   this.selectedyear==0?this.load():this.reload();

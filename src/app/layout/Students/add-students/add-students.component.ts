@@ -4,12 +4,13 @@ import { StudentsService } from '../../../Services/students.service';
 import{Student} from 'src/app/model/Student'
 import { SelectItem } from 'primeng/api/selectitem';
 import{ActivatedRoute,Router} from '@angular/router'
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-add-students',
   templateUrl: './add-students.component.html',
   styleUrls: ['./add-students.component.css'],
-  providers:[StudentsService]
+  providers:[StudentsService,MessageService]
 })
 export class AddStudentsComponent implements OnInit {
   inst_id:number;
@@ -18,7 +19,8 @@ studentForm:FormGroup;
 submitted: boolean;
 stud:Student;
 years:SelectItem[]
-  constructor(private fb: FormBuilder,private studentService:StudentsService,private _activatedRoute:ActivatedRoute,private router:Router) { }
+  constructor(private fb: FormBuilder,private studentService:StudentsService,
+            private _activatedRoute:ActivatedRoute,private router:Router,private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.inst_id=parseInt(this._activatedRoute.snapshot.paramMap.get('id'));
@@ -45,7 +47,14 @@ years:SelectItem[]
     this.submitted = true;
     this.studentForm.patchValue({institutionid:this.inst_id});
     this.stud=this.studentForm.value;    
-    this.studentService.addStudent(this.stud).subscribe(data=>{this.router.navigate(['/students',this.inst_id,this.inst_name])});
+    this.studentService.addStudent(this.stud).subscribe(res=>{if(res.status==201){
+                                                          this.messageService.clear();
+                                                          this.messageService.add({ severity:'success', summary: "Data Inserted"});
+                                                          this.router.navigate(['/students',this.inst_id,this.inst_name])}},
+                                                          err=>{ if(err.status==400){
+                                                            this.messageService.clear();
+                                                            this.messageService.add({ severity:'error', summary: "Something Went Wrong",detail:"One or more Field is Missing" });  }
+                                                                                                        });
 
   }
   

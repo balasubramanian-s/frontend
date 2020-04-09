@@ -3,8 +3,8 @@
    <h1 class="p-3 mb-2 bg-dark text-white"> {{name}} Employees </h1>
    <button [routerLink]="['/addFaculties',this.id,this.name]" class="p-2 mb-2 btn-dark btn-btn-lg" style="float: right;">Add Faculty</button>
    <div >
-
-      <table class="table table-striped" border="2">
+      <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+      <table class="table table-striped border" >
          
            
             <thead>
@@ -37,9 +37,27 @@
             <td>{{i.modifiedon |date:'medium'}}</td>
             <td><i [routerLink]="['/editfaculty',i.id,this.id,this.name]" class="pi pi-user-edit" style="font-size: 2em"></i> 
             &nbsp;&nbsp;<i  (click)="delete(i.id)" class="pi pi-trash" style="font-size: 2em"></i></td>
+            <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+               <ng-template let-message pTemplate="message">
+                   <div style="text-align: center">
+                       <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+                       <h3>{{message.summary}}</h3>
+                       <p>{{message.detail}}</p>
+                   </div>
+                   <div class="ui-g ui-fluid">
+                       <div class="ui-g-6">
+                           <button type="button" pButton (click)="onConfirm(i.id)" label="Yes" class="ui-button-success"></button>
+                       </div>
+                       <div class="ui-g-6">
+                           <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+                       </div>
+                   </div>
+               </ng-template>
+           </p-toast>
          </tr>
          </tbody>
       </table>
+ 
 
    </div>
 </div>

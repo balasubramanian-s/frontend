@@ -5,15 +5,15 @@ import { FacultyService } from 'src/app/Services/faculty.service';
 import { Faculty } from 'src/app/model/Faculty';
 import { Roles } from 'src/app/model/Roles';
 import { FacultyObj } from 'src/app/model/FacultyObj';
-import { error } from '@angular/compiler/src/util';
 import { organization } from 'src/app/model/organization';
 import { ApiService } from 'src/app/Services/api.service';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-editfaculty',
   templateUrl: './editfaculty.component.html',
   styleUrls: ['./editfaculty.component.css'],
-  providers:[FacultyService,ApiService]
+  providers:[FacultyService,ApiService,MessageService]
 })
 export class EditfacultyComponent implements OnInit {
   flag=false;
@@ -25,15 +25,32 @@ faculty:Faculty;
 roles: Roles[];
 orgObj:organization[];
 error;
-  constructor(private activatedRoute:ActivatedRoute,private facultyService:FacultyService,private orgService:ApiService,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private facultyService:FacultyService,
+              private orgService:ApiService,private router:Router,
+              private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.id=parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.org_id=parseInt(this.activatedRoute.snapshot.paramMap.get('id1'));
     this.org_name=this.activatedRoute.snapshot.paramMap.get('name');
-    this.facultyService.getFaculty(this.id).subscribe(data=>{this.Obj=data,this.Obj==null?this.flag=false:this.flag=true,this.load();});
-    this.facultyService.getRoles().subscribe((data: any) => { this.roles = data });
-    this.orgService.getAllOrg().subscribe((res:any)=>{this.orgObj=res.data});
+
+    this.facultyService.getFaculty(this.id).subscribe(res=>{if(res.status==200){
+                                                             this.Obj=res.body.data,this.Obj==null?this.flag=false:this.flag=true,this.load();
+                                                             }},err=>{
+                                                               if(err.status==404){
+                                                              this.messageService.clear();
+                                                              this.messageService.add({ severity:'error', summary: "Something Went Wrong" });} });
+    this.facultyService.getRoles().subscribe((res: any) => { if(res.status==200){this.roles = res.body.data} },
+                                                  err=>{
+                                                    if(err.status==404){
+                                                   this.messageService.clear();
+                                                   this.messageService.add({ severity:'error', summary: "Something Went Wrong" });} });
+    this.orgService.getAllOrg().subscribe((res:any)=>{if(res.status==200){this.orgObj=res.body.data}},
+                                                        err=>{
+                                                          if(err.status==404){
+                                                        this.messageService.clear();
+                                                        this.messageService.add({ severity:'error', summary: "Something Went Wrong" });}}
+                                                        );
    
 
   }
@@ -53,9 +70,22 @@ editform=new FormGroup({
 
 
 update(){
- // console.log(this.editform.value);
+ 
   this.faculty=this.editform.value;  
-  this.facultyService.editFaculty(this.faculty).subscribe(data=>this.router.navigate(['/faculty']),error => this.error=error);
+  this.facultyService.editFaculty(this.faculty).subscribe((res:any)=>{if(res.status==200){this.router.navigate(['/faculty',this.org_id,this.org_name]);}},
+                                                                       err => {
+                                                                        if(err.status==204) 
+                                                                          {this.messageService.clear();
+                                                                            this.messageService.add({ severity:'error', summary: "Something Went Wrong" });
+                                                                        }
+                                                                        
+                                                                        if(err.status==400)
+                                                                         {this.messageService.clear();
+                                                                          this.messageService.add({ severity:'error', summary: "Something Went Wrong" });
+                                                                        }}
+                                                                        );
+
+  
 
 }
 role(id: number) {

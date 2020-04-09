@@ -48,8 +48,9 @@ import {CalendarModule} from 'primeng/calendar';
 import { StudentDetailsComponent } from './layout/Students/student-details/student-details.component';
 import { LogoutComponent } from './layout/logout/logout.component';
 import { HeaderComponent } from './layout/header/header.component';
-
-
+import {ProgressBarModule} from 'primeng/progressbar';
+import {CarouselModule} from 'primeng/carousel';
+import{MessageService} from 'primeng/api';
 
 
 @NgModule({
@@ -82,12 +83,12 @@ import { HeaderComponent } from './layout/header/header.component';
     TabMenuModule,
     SidebarModule,
     ButtonModule,
-    TableModule, 
+    TableModule, ProgressBarModule,CarouselModule,
     ToastModule,PanelModule,MessagesModule,MessageModule,DropdownModule,CalendarModule,
     
     RouterModule.forRoot([])
   ],
-  providers: [httpInterceptorProviders,ApiService,FacultyService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},httpInterceptorProviders
+  providers: [httpInterceptorProviders,ApiService,FacultyService,MessageService],//{provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},httpInterceptorProviders
   bootstrap: [AppComponent]
 })
 export class AppModule { }
