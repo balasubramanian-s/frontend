@@ -15,8 +15,8 @@
             <tr>
                 <th>No</th>
                 <th>Registration No</th>
-               <th>FirstName</th>
-               <th>LastName</th>
+               <th>Name</th>
+               
                <th>Year</th>
                <th>Institution</th>                   
                <th>Action</th>
@@ -27,8 +27,8 @@
             <tr *ngFor="let student of students;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{student?.redgno}}</td>
-                <td><a [routerLink]="['/studentDetails',student.id]">{{student.fname}}</a></td>
-                <td>{{student?.lname}}</td>
+                <td ><a [routerLink]="['/studentDetails',student.id]" style="color:black;">{{student.fname}}  {{student?.lname}}<i class="pi pi-info-circle" style="font-size: 1em"></i></a></td>
+  
                 <td>{{student?.year}}</td>
                 <td>{{student?.org.name}}</td>               
             

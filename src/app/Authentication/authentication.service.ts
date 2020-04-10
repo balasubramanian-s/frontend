@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient,HttpErrorResponse} from '@angular/common/http'
 import { map, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable ,throwError} from 'rxjs';
 import * as moment from "moment";
 import {User} from '../model/User'
 import { error } from '@angular/compiler/src/util';
@@ -17,7 +17,7 @@ url="http://localhost:8080/authenticate"
   constructor(private _httpClient:HttpClient) { }
 
 getjwt(user:User):Observable<Jwt>{
-return  this._httpClient.post<Jwt>(this.url,user).pipe(map((res:any)=>res.data.jwt));
+return  this._httpClient.post<Jwt>(this.url,user).pipe(map((res:any)=>res.data.jwt),catchError(this.handleError));
 }
  
 authenticate(user:User) {
@@ -42,7 +42,23 @@ this.getjwt(user).subscribe((data:any)=>{this.token=data});
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('token');
   }
-
+  private handleError(error: HttpErrorResponse) {
+    let errMsg: string;
+    let data={};
+    
+    if (error instanceof Response) {
+      const err = error || '';
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    data={
+      reason:error.error.errors,
+      status:error.status
+    }    
+    return throwError(data);
+  }
 
 
 }
