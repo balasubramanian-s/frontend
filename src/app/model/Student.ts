@@ -8,5 +8,7 @@ export class Student {
     email: String
     mobileno: Number
     year: Number
+    startYear:String
+    endYear:String
 
 }

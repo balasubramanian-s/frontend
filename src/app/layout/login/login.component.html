@@ -1,25 +1,32 @@
 <app-header></app-header>
 
+<div class="row justify-content-center no-gutters">
+
+  <div class="col-sm-6"></div>
+  <div class="col-sm-6" id="login">
 
 
-<div id="login" >
-  
-<div style="padding: 5%;position:absolute;" class="border border-dark rounded-lg">
-  <h1 class="p-3 mb-2 bg-transparent  " >Login Page</h1><br>
-  <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
 
-<form [formGroup]="loginform" (ngSubmit)="validate()"> 
-    <input type="text" class="form-control" aria-label="Username" placeholder="Username" aria-describedby="basic-addon1" formControlName="username">
-  <br>
-  
-  <input type="password"  class="form-control" aria-label="Password" formControlName="password"  aria-describedby="basic-addon1" placeholder="Password"><br>
-<button type="submit" class="btn btn-dark"  >Login</button>
-</form>
+    <div style="padding: 5%;position:absolute;" class="border border-dark rounded-lg">
+      <h1 class="p-3 mb-2 bg-transparent  ">Login Page</h1><br>
+      <p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
+      <form [formGroup]="loginform" (ngSubmit)="validate()">
+        <input type="text" class="form-control" aria-label="Username" placeholder="Username"
+          aria-describedby="basic-addon1" formControlName="username">
+        <br>
+
+        <input type="password" class="form-control" aria-label="Password" formControlName="password"
+          aria-describedby="basic-addon1" placeholder="Password"><br>
+        <button type="submit" class="btn btn-dark">Login</button>
+      </form>
+
+
+
+
+    </div>
+  </div>
+
 </div>
 
-
-
-  
-</div>
-
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>

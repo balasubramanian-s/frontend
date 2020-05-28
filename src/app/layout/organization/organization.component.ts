@@ -17,6 +17,8 @@ import * as _ from 'lodash';
 export class OrganizationComponent implements OnInit {
   flag = false;
   org: organization[];
+  page:number=1;
+  searchText:string;
   
 
   constructor(private _apiService: ApiService, private router: Router,private messageService: MessageService) {
@@ -55,7 +57,12 @@ export class OrganizationComponent implements OnInit {
         this.reload();
         this.messageService.clear();
         this.messageService.add({ severity:'success', summary: res.body.description}); },
-        err=>console.error(err.status));
+        err=>{
+          
+        this.messageService.clear();
+        this.messageService.add({ severity:'error', summary: "Access Denied "}); 
+          
+        });
   }
   onReject() {
     this.messageService.clear('c');
@@ -70,7 +77,12 @@ export class OrganizationComponent implements OnInit {
 
     this._apiService.statusOrg(id).subscribe(res => { this.reload();this.messageService.clear();
                                              this.messageService.add({ severity:'success', summary: 'Updated',detail: res.body.description}); },
-                                             err=>console.error(err.status));
+                                             err=>{if(err.status==401){
+          
+                                              this.messageService.clear();
+                                              this.messageService.add({ severity:'error', summary: "Access Denied "}); 
+                                             }  
+                                              });
   }
 
 

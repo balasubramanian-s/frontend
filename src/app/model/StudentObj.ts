@@ -7,6 +7,7 @@ export class StudentObj{
     redgno: Number
     fname: String
     lname: String
+    batch:String
     dob: Date
     email: String
     mobileno: Number

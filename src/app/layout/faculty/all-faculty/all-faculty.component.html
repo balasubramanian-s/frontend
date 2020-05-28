@@ -23,7 +23,7 @@
      </tr>
 
   </thead>
-  <tbody *ngFor="let i of this.faculty ;let j=index;">
+  <tbody *ngFor="let i of this.faculty | paginate:{itemsPerPage:5,currentPage:page};let j=index;">
     
     <th>{{j+1}}</th>
      <td> {{i.first_name}}</td>
@@ -57,6 +57,7 @@
      </p-toast>     
 
   </tbody>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </table>
 </div>
 </div>

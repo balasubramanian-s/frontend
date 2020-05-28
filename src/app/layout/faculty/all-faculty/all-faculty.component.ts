@@ -15,6 +15,7 @@ export class AllFacultyComponent implements OnInit {
   flag=false;
   name:string[];
   ask;
+  page=1;
   constructor(private _facultyService:FacultyService,private _activatedroute:ActivatedRoute ,private messageService:MessageService) { }
 
   ngOnInit(): void {

@@ -34,7 +34,9 @@ years:SelectItem[]
       'dob': new FormControl('',Validators.required),
       'email': new FormControl('',Validators.required),
       'mobileno': new FormControl('', Validators.required),
-      'year':new FormControl('',Validators.required)
+      'year':new FormControl('',Validators.required),
+      'startYear':new FormControl('',Validators.required),
+      'endYear':new FormControl('',Validators.required)
   });
   this.years=[];
   this.years.push({label:'Select Year',value:''});
@@ -46,7 +48,10 @@ years:SelectItem[]
   onSubmit() {
     this.submitted = true;
     this.studentForm.patchValue({institutionid:this.inst_id});
-    this.stud=this.studentForm.value;    
+    
+
+    this.stud=this.studentForm.value;   
+    
     this.studentService.addStudent(this.stud).subscribe(res=>{if(res.status==201){
                                                           this.messageService.clear();
                                                           this.messageService.add({ severity:'success', summary: "Data Inserted"});

@@ -46,6 +46,34 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
+                   Started On: 
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="month" formControlName="startYear" name="startyear"/>
+
+                    
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="StartYear Number is required"
+                        *ngIf="!studentForm.controls['startYear'].valid&&studentForm.controls['startYear'].dirty"></p-message>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                  Ended On:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input type="month" formControlName="endYear" name="endyear"/>
+
+                    
+                </div>
+                <div class="ui-grid-col-4">
+                    <p-message severity="error" text="Registration Number is required"
+                        *ngIf="!studentForm.controls['endYear'].valid&&studentForm.controls['endYear'].dirty"></p-message>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
                     Date Of Birth 
                 </div>
                 <div class="ui-grid-col-6">

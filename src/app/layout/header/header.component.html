@@ -1,19 +1,41 @@
+<div>
+  <p-sidebar [(visible)]="sidebar" position="left" [style]="{width:'20em'}" class="bg-transparent">
+    <aside> <button class="p-3 mb-2 bg-info text-white btn-block" [routerLink]="['/faculty'] ">Employees</button>
+    </aside>
+    <aside> <button class="p-3 mb-2 bg-info text-white btn-block" [routerLink]="['/roles'] ">Roles</button></aside>
+    <aside><button class="p-3 mb-2 bg-info text-white btn-block" [routerLink]="['/allstudents']">Students</button>
+    </aside>
+  </p-sidebar>
+
+  <nav class="navbar navbar-info  bg-info justify-content-between text-white">
 
 
-<p-sidebar [(visible)]="sidebar" position="left" [style]="{width:'20em'}" class="bg-transparent">
-<aside> <button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/faculty'] ">Employees</button></aside>
-<aside> <button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/roles'] ">Roles</button></aside>
-<aside><button class="p-3 mb-2 bg-dark text-white btn-block" [routerLink]="['/allstudents']">Students</button></aside>
-</p-sidebar>
-<h1 class="p-3 mb-2 bg-info text-white" style="font-size: 2rem;">
-    <i *ngIf=" _auth.isUserLoggedIn()" (click)="sidebar = true" label="Show" class="pi  pi-align-justify "style="font-size: 2rem;"></i>
-     Revature 
-   <span style="float: right;">
-    <i  *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/logout']" class="pi pi-sign-out" style="font-size: 1.5rem;">Logout</i>&nbsp; 
-    
-     <i  *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/home'] " class="pi pi-home" style="font-size: 1.5rem;">Home</i></span>
-</h1>
-<button *ngIf=" _auth.isUserLoggedIn()" type="button" class="btn btn-info text-white" (click)="back()"><i class="pi pi-arrow-left" style="font-size:1 rem;"></i></button>
+    <a class="navbar-brand" style="font-size: 2rem;"> 
+      <i *ngIf=" _auth.isUserLoggedIn()" (click)="sidebar = true " label="Show"
+        class="pi  pi-align-justify " style="font-size: 2rem;"></i> Revature</a>
+    <form class="form-inline">
+      <div class="dropdown show border border-dark " *ngIf=" _auth.isUserLoggedIn()">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="pi pi-user" style="font-size: 1rem;"></i>{{ name }}
+        </a>
+        <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item text-dark" *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/home'] "> <i
+              class="pi pi-home" style="font-size: 1rem;"></i>Home</a>
+          <a class="dropdown-item text-dark">Profile</a>
+          <a class="dropdown-item text-dark" *ngIf=" _auth.isUserLoggedIn()" [routerLink]="['/logout']"> <i
+              class="pi pi-sign-out" style="font-size: 1rem;"></i>Logout</a>
+        </div>
+      </div>
+
+    </form>
+  </nav>
 
 
+
+
+<button *ngIf=" _auth.isUserLoggedIn()" type="button" class="btn btn-info text-white" (click)="back()"><i
+    class="pi pi-arrow-left" style="font-size:1 rem;"></i></button>
+
+</div>
 <router-outlet></router-outlet>
